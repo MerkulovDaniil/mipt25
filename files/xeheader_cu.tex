@@ -1,0 +1,289 @@
+\PassOptionsToPackage{backref=page}{hyperref}
+% %%% === ADDITIONAL PACKAGES
+% \usepackage{animate}
+\usepackage{subcaption}
+\usepackage[labelsep=period, font={color=black}, figurename=Рисунок, tablename=Таблица]{caption}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage[export]{adjustbox}
+\usepackage{algorithmic}
+\usepackage{fontawesome5}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} %Шрифты ы формулах
+
+\graphicspath{{../files/}}
+
+% % \LinesNumbered
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+% \newcommand{\theHtable}{\thetable}
+\usepackage[ruled,vlined]{algorithm2e}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+
+% %%% === CONDITIONAL PACKAGE
+\usepackage{ifthen}
+
+%%% === TEMPLATE
+\usepackage{fontspec}
+
+
+
+
+\def\fontpath{../files/fonts_cu/}
+
+\setmainfont{Inter_24pt-Regular.ttf}[
+Path={\fontpath},
+BoldFont = Inter-24pt-Bold,
+ItalicFont = Inter-24pt-Italic,
+BoldItalicFont = Inter-24pt-SemiBoldItalic,
+SwashFont = {Inter_24pt-SemiBold}, %Фигурные скобки важны!
+Ligatures=TeX
+]  %Body text main
+%Увеличение шрифта математики в 6/5 раз, чтобы совпадал размер с обычным текстом
+%прописани наши стандартные размеры шрифтов
+
+\DeclareMathSizes{20}{24}{18}{13.5}
+\DeclareMathSizes{12}{14.4}{10.8}{8.1}
+\DeclareMathSizes{11}{13.2}{9.9}{7.425}
+\DeclareMathSizes{10}{12}{9}{6.75}
+\DeclareMathSizes{8}{9.6}{7.2}{5.4}
+
+\setmonofont{RobotoMono-Light}[
+Path={\fontpath},
+BoldFont = RobotoMono-Regular,
+ItalicFont =  RobotoMono-LightItalic,
+BoldItalicFont = RobotoMono-Italic,
+Ligatures={}
+]
+
+\setbeamerfont{title}{series=\bfseries, size=\fontsize{20}{22}}
+\setbeamerfont{frametitle}{series=\bfseries, size=\fontsize{20}{22}}
+\setbeamerfont{section title}{series=\bfseries, size=\fontsize{30}{30}}
+\setbeamerfont{footline}{size=\fontsize{8}{8}}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{section title}{fg=black}
+\setbeamercolor{figure name}{fg=tdarkgray}
+
+
+\setsansfont{Inter_24pt-Regular.ttf}[
+Path={\fontpath},
+BoldFont = Inter-24pt-Bold,
+ItalicFont = Inter-24pt-Italic,
+BoldItalicFont = Inter-24pt-SemiBoldItalic,
+SwashFont = {Inter_24pt-SemiBold}, %Фигурные скобки важны!
+Ligatures=TeX
+]  %Body text main
+
+\AtBeginDocument{%
+	\let\mathbb\relax
+	\DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}%
+}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamertemplate{itemize items}[circle] % For level-1 itemize
+\setbeamertemplate{itemize subitem}[circle] % For level-2 (subitems)
+\setbeamertemplate{itemize subsubitem}[circle] % For level-3 (subsubitems)
+
+
+\definecolor{tdarkgrey} {RGB} {149,149,149}
+\definecolor{tdarkgray} {RGB} {149,149,149}
+\addtobeamertemplate{footline}{\hfill \hbox{\textcolor{tdarkgray}{\insertframenumber} \hspace{9.5mm}}
+	\vskip-0pt
+}
+
+\usenavigationsymbolstemplate{}
+
+
+
+% %%% === ADDITIONAL COMMANDS
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\usepackage{pdfpages}
+
+\setbeamerfont{author}{series=\bfseries, size=\fontsize{20}{22}}
+\setbeamerfont{institute}{series=\bfseries, size=\fontsize{12}{12}}
+
+
+%%% === BACKGROUND IMAGE SETUP
+\AtBeginDocument{
+	\ifthenelse{\isundefined{\cover}}{} % Обложка
+	{
+		\includepdf{\cover}
+	}
+	\ifthenelse{\isundefined{\bgimage}}{ % Титульный лист
+		% No background image specified
+	}{
+		\setbeamertemplate{title page}{
+			\begin{tikzpicture}[remember picture,overlay]
+				\node[anchor=center, xshift=0pt, yshift=0pt] at (current page.center) {
+					\includegraphics[width=1.05\paperwidth, height=1.05\paperheight]{\bgimage}
+				};
+				\node[fill=white, fill opacity=0.7, text opacity=1, inner sep=10pt, rounded corners=10pt] at (current page.center) {
+					\begin{minipage}{0.5\paperwidth}
+						\centering
+						%\usebeamerfont{title}\inserttitle\par
+						\usebeamerfont{author}\insertauthor\par
+						\vspace*{0.5cm}
+						\usebeamerfont{institute}\insertinstitute\par
+						\vspace*{0.5cm}
+						\usebeamerfont{institute}
+						\href{https://fmin.xyz}{\includegraphics[height=0.27cm]{logo.pdf}}\hspace{0.2cm}  
+						\href{https://cu25.fmin.xyz}{\faGem[regular]} \hspace{0.04cm} 
+						\href{https://github.com/MerkulovDaniil/cu25}{\faGithub} \hspace{0.07cm} 
+						\href{https://t.me/fminxyz}{\faTelegram} \par
+					\end{minipage}
+				};
+			\end{tikzpicture}
+		}
+	}
+	
+}
+
+
+\usebackgroundtemplate% Лого цу в правом верхнем углу -- это на самом деле фон
+	{%	
+		\ifthenelse{\equal{\insertframenumber}{0}}
+		{}
+		{
+			\begin{tikzpicture}[remember picture, overlay]
+			\node[anchor=north east, xshift=-8.6mm, yshift=-6mm] at (current page.north east) {
+				\includegraphics[width=7.6mm]{logo_cu_new.pdf}%
+			};
+			\end{tikzpicture}
+		}
+	}
+
+\geometry{
+	paperwidth=192mm,paperheight=108mm,
+	left=9.5mm,right=9.5mm, top=9.5mm, %bottom=9.5mm,
+	%showframe
+}
+
+
+%\setbeamercolor{frametitle}{fg=black,bg=yellow} % для дебага горизонтального положения frame title можно закрасить коробку
+\usepackage{adjustbox}
+\makeatletter
+\setbeamertemplate{frametitle}{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\dimexpr\textwidth-31mm% Здесь настраивается размер коробки frame title
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  %\hfill% Это здесь было в исходном определении
+  \adjustbox{valign=top,left}{ % , frame. Добавлен для вертикального выравнивания в том числе двухстрочных frame title. Сюда можно написать frame, чтобы увидеть коробку
+  \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima, leftskip=-4.8mm]{frametitle} % leftskip отвечает за то что frame title прижат влево
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+}
+}
+\makeatother
+
+\addtobeamertemplate{footline}{}{\vskip14.2mm}%{\vskip14.6mm} % 9.6mm, чтобы цифра была внизу страницы + 4.6mm отступ
+\addtobeamertemplate{frametitle}{\vspace*{-5.0mm}}{\vspace*{-2.5mm}} % Здесь можно менять вертикальное выравнивание заголовков слайдов (первый аргумент) и текста после них (второй аргумент)
+
+
+\AtBeginSection[]{
+\begin{frame}
+	\vfill\vspace{1cm}
+	\centering
+	\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+		\usebeamerfont{section title}\insertsectionhead\par%
+	\end{beamercolorbox}
+	\vfill
+\end{frame}
+}
+
+
+
+\makeatletter
+\beamer@centeredfalse % выравнивает текст по верху
+\beamer@onlytextwidthtrue % Добавляет в columns опцию onlytextwidth, которая делает полную ширину равной textwidth
+\makeatother
+
+
+\makeatletter
+\let\orig@column\column
+\let\endorig@column\endcolumn
+
+\renewenvironment{column}[1]{%
+	\@tempdima=\dimexpr#1-2.5mm % Уменьшаем размер колонок, чтобы осталось место между ними
+	\orig@column{\the\@tempdima}% Вызываем оригинальную column
+}{%
+	\endorig@column
+}
+\makeatother
+
+%\usepackage{enumitem}
+
+
+\setlength{\leftmargini}{11pt}
+
+
+
+
+
+\setbeamertemplate{itemize item}{\color{black}$\raisebox{1pt}{\scalebox{.6}{$\bullet$}}$} 
+
+\makeatletter
+
+\def\enumerate{%
+  \ifnum\@enumdepth>2\relax\@toodeep
+  \else%
+    \advance\@enumdepth\@ne%
+    \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+    \advance\@itemdepth\@ne%
+  \fi%
+  \beamer@computepref\@enumdepth% sets \beameritemnestingprefix
+  \edef\beamer@enumtempl{enumerate \beameritemnestingprefix item}%
+  \@ifnextchar[{\beamer@@enum@}{\beamer@enum@}}
+\def\beamer@@enum@[{\@ifnextchar<{\beamer@enumdefault[}{\beamer@@@enum@[}}
+\def\beamer@enumdefault[#1]{\def\beamer@defaultospec{#1}%
+  \@ifnextchar[{\beamer@@@enum@}{\beamer@enum@}}
+\def\beamer@@@enum@[#1]{% partly copied from enumerate.sty
+  \@enLab{}\let\@enThe\@enQmark
+  \@enloop#1\@enum@
+  \ifx\@enThe\@enQmark\@warning{The counter will not be printed.%
+    ^^J\space\@spaces\@spaces\@spaces The label is: \the\@enLab}\fi
+  \def\insertenumlabel{\the\@enLab}
+  \def\beamer@enumtempl{enumerate mini template}%
+  \expandafter\let\csname the\@enumctr\endcsname\@enThe
+  \csname c@\@enumctr\endcsname7
+  \beamer@enum@}
+\def\beamer@enum@{%
+  \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
+  \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+  \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+  \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+  \expandafter
+    \list
+      {\usebeamertemplate{\beamer@enumtempl}}
+      {\usecounter\@enumctr%
+        \def\makelabel##1{{\hss\rlap{{%
+                \usebeamerfont*{enumerate \beameritemnestingprefix item}%
+                \usebeamercolor[fg]{enumerate \beameritemnestingprefix item}\textcolor{black}{##1}}}\hss}}}% Здесь изменено, чтобы цифры выравнивались по левому краю. И цвет.
+  \beamer@cramped%
+  \raggedright%
+  \beamer@firstlineitemizeunskip%
+}
+\def\endenumerate{\ifhmode\unskip\fi\endlist%
+   \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body end}}
+
+\makeatother

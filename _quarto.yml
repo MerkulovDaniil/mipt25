@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: _site
+  resources: 
+    - "*.mp4"
+    - "*.txt"
+    - "*.csv"
+
+format: fminxyz-html
+
+execute:
+  freeze: auto
+
+filters:
+  - fminxyz
+
+website:
+  navbar:
+    left: 
+        - program.md
+        - homework.md 
+        - projects.md
+    title: false
+    logo: logo.svg
+    logo-alt: mipt24.fmin.xyz
+    tools:
+      - icon: github
+        href: https://github.com/MerkulovDaniil/mipt24
+      - icon: youtube
+        href: https://www.youtube.com/@fmin
+      - icon: telegram
+        href: https://t.me/mipt24_fmin
+      - icon: person-workspace
+        href: https://classroom.google.com/c/NzEwNDkxNTk0MDYz
+      - icon: table
+        href: https://docs.google.com/spreadsheets/d/17M_XfBS8MrMSqKMRtsuew-Bus4A8HTikto4wyn8KBmw
+      - icon: gem
+        href: https://fmin.xyz
+  repo-url: https://github.com/MerkulovDaniil/mipt24
+  repo-branch: main
+  repo-actions: [edit]
+  search: 
+    location: navbar
+    type: textbox
+  twitter-card: true
+  open-graph: true
+  favicon: favicon.svg

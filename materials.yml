@@ -1,0 +1,174 @@
+- title: Вспоминаем линейную алгебру. Некоторые матричные разложения. Спектр матрицы. SVD. Skeleton. Градиент. Гессиан. Матрично-векторное дифференцирование
+  number: 1
+  materials: /lectures/1.pdf
+  notes: /notes/1.pdf
+  youtube: https://youtu.be/JjfCP-bvEeo
+  download: https://disk.yandex.com/i/7k9e8nU_OrSpwg
+
+- title: Повторяем матричные производные. Проклятие размерности методов нулевого порядка
+  number: 2
+  materials: /lectures/2.pdf
+  notes: /notes/2.pdf
+  youtube: https://youtu.be/dQ77oi2ydbo
+  download: https://disk.yandex.com/i/LYOwqyvQDXiTXA
+
+- title: Автоматическое дифференцирование. Forward\Reverse Mode. Вычислительный граф.
+  number: 3
+  materials: /lectures/3.pdf
+  notes: /notes/3.pdf
+  youtube: https://youtu.be/mBP4XHb-kc0
+  download: https://disk.yandex.com/i/91rX38tnrT7-Jg
+
+- title: Выпуклость. Выпуклые, афинные множества. Сумма Минковского. Выпуклые функции. Неравенство Йенсена
+  number: 4
+  materials: /lectures/4.pdf
+  notes: /notes/4.pdf
+  youtube: https://youtu.be/uS3vyyNrkrQ
+  download: https://disk.yandex.com/i/zPalLTAAmn6p7A
+
+- title:  Сильно выпуклые функции. Условие Поляка - Лоясиевича. Линейная регрессия. Регуляризация.
+  number: 5
+  materials: /lectures/5.pdf
+  notes: /notes/5.pdf
+  youtube: https://youtu.be/9zpJStnjNrg
+  download: https://disk.yandex.com/i/h_6U1bWWQyosSg
+
+- title:  Сопряженные множества. Сопряженные конусы. Многогранники. Сопряженные функции. Преобразование Лежандра. Субградиент. Субдифференциал. Теоремы Моро-Рокафеллара, Дубовицкого-Милютина
+  number: 6
+  materials: /lectures/6.pdf
+  notes: /notes/6.pdf
+  youtube: https://youtu.be/T0p5LQtm4MY
+  download: https://disk.yandex.ru/i/QB4yzXcme_xVxg
+
+- title: Субдифференциал. Условия оптимальности в субдифференциальной форме. Функция Лагранжа. Множители Лагранжа. Задачи с ограничениями типа равенств.
+  number: 7
+  materials: /lectures/7.pdf
+  notes: /notes/7.pdf
+  youtube: https://youtu.be/2rk22wrl9_M
+  download: https://disk.yandex.com/i/zfXXY9Gqua45zQ
+
+- title: Условия оптимальности. Функция Лагранжа. Множители Лагранжа. Теорема Каруша - Куна - Таккера
+  number: 8
+  materials: /lectures/8.pdf
+  notes: /notes/8.pdf
+  youtube: https://youtu.be/FRzYD6Vl0Eo
+  download: https://disk.yandex.ru/i/2ThvkXJuqpbs4w
+
+- title: Двойственность. Введение в двойственность. Двойственная задача. Two-way partitioning problem. Решение прямой задачи с помощью двойственной
+  number: 9
+  materials: /lectures/9.pdf
+  notes: /notes/9.pdf
+  youtube: https://youtu.be/Nka2IYcKApY
+  download: https://disk.yandex.ru/i/Wey3T2JEzzJvYw
+
+- title: Линейное программирование. Транспортная задача и другие формулировки прикладных задач как ЛП. Симплекс метод для решения ЛП
+  number: 10
+  materials: /lectures/10.pdf
+  notes: /notes/10.pdf
+  youtube: https://youtu.be/Opa5nORJEO0
+  download: https://disk.yandex.ru/i/N61YYA_4gGfMvg
+
+- title: Двойственность в линейном программировании. Анализ чувствительности. 
+  number: 11
+  materials: /lectures/11.pdf
+  notes: /notes/11.pdf
+  youtube: https://youtu.be/LTq0gs3exo0
+  download: https://disk.yandex.ru/i/NXBd7hl9NU_lYg
+
+- title: Классификация и обозначения в задачах оптимизации. Скорость сходимости. Линейный поиск. Неточная одномерная оптимизация. Правила Армихо  - Гольдштейна. Условие Вульфа
+  number: 12
+  materials: /lectures/12.pdf
+  notes: /notes/12.pdf
+  youtube: https://youtu.be/oaeZkbJ4lDs
+  download: https://disk.yandex.com/i/XyXXtjoQzPw6Ww
+
+- title: Градиентный спуск. Теоремы сходимости в гладком случае (выпуклые, сильно выпуклые, PL).
+  number: 13
+  materials: /lectures/13.pdf
+  notes: /notes/13.pdf
+  youtube: https://youtu.be/HH42f6EF_OY
+  download: https://disk.yandex.com/i/5WNdlgeITxAdfA
+
+- title: Нижние оценки для градиентных методов. Ускоренные градиентные методы. Полиномы Чебышева. Метод Поляка, Нестерова.
+  number: 14
+  materials: /lectures/14.pdf
+  notes: /notes/14.pdf
+  youtube: https://youtu.be/mGS8b79K3fU
+  download: https://disk.yandex.ru/i/rOwaFE_U0dlTbw
+
+- title: Метод сопряженных направлений. Ортогонализация Грамма - Шмидта. Понятие $A$-ортогональных векторов. Метод сопряженных градиентов
+  number: 15
+  materials: /lectures/15.pdf
+  notes: /notes/15.pdf
+  youtube: https://youtu.be/htVaUlxb1i8
+  download: https://disk.yandex.ru/i/Ci9ujr6ifK-FwQ
+
+- title: Концепция методов адаптивной метрики. Метод Ньютона. Квазиньютоновские методы
+  number: 16
+  materials: /lectures/16.pdf
+  notes:
+  youtube: 
+  download: 
+
+- title: Градиентные методы в условных задачах оптимизации - метод проекции градиента. Метод Франк - Вульфа. 
+  number: 17
+  materials: /lectures/17.pdf
+  notes: /notes/17.pdf
+  youtube: https://youtu.be/GaHF0AnXSEE
+  download: https://disk.yandex.ru/i/dVYuMZ_Y2qJjRA
+
+- title: Субградиентный метод. Теоремы сходимости в негладком случае (выпуклый случай). Особенности работы градиентного метода в практических негладких задачах. Задача наименьших квадратов с $l_1$ регуляризацией. Метод проекции субградиента. Метод зеркального спуска.
+  number: 18
+  materials: /lectures/18.pdf
+  notes: /notes/18.pdf
+  youtube: https://youtu.be/Xs9ufxTFZWU
+  download: https://disk.yandex.com/i/Z-G9R4tTa4VxXw
+
+- title: Проксимальный градиентный метод
+  number: 19
+  materials: /lectures/19.pdf
+  notes: /notes/19.pdf
+  youtube: https://youtu.be/pm59eAxfMPI
+  download: https://disk.yandex.com/d/TsWbzmIs2UTLcQ
+
+- title: Введение в стохастические градиентные методы. Батч, эпоха. Сходимость SGD
+  number: 20
+  materials: /lectures/20.pdf
+  notes: /notes/20.pdf
+  youtube: https://youtu.be/aHWVRLXppDU
+  download: https://disk.yandex.com/i/2rUKeDTp3lH5_w
+
+- title: "Методы редукции дисперсии: SAG, SVRG"
+  number: 21
+  materials: /lectures/21.pdf
+  notes: /notes/21.pdf
+  youtube: https://youtu.be/GjfLM5uevuE
+  download: https://disk.yandex.ru/i/TrM9P2r9K8AF2w
+
+- title: "Адаптивные градиентные методы. AdamW, Muon, Shampoo, NanoGPT speedrun, AlgoPerf banchmark"
+  number: 22
+  materials: /lectures/22.pdf
+  notes: /notes/22.pdf
+  youtube: https://youtu.be/YyP69_a9DCc
+  download: https://disk.yandex.ru/i/wye4SRqjR0L78w
+
+- title: Удивительные сюжеты из мира обучения больших нейросетей с точки зрения методов оптимизации. Проекция функции потерь нейронной сети на прямую, плоскость. Инициализация. Grokking. Double Descent. Large batch training. Чекпоинтинг активаций. Обучение нейронных сетей с точки зрения методов оптимизации. Обобщающая способность моделей машинного обучения. Double Descent. Grokking.
+  number: 23
+  materials: /lectures/23.pdf
+  notes: /notes/23.pdf
+  youtube: https://youtu.be/HGLPJUsr4F8
+  download: https://disk.yandex.ru/i/dMe4uNQ3IjF29Q
+
+- title: Двойственные методы оптимизации. Прямо-двойственные методы. Метод двойственного градиентного подъёма. Метод модифицированной функции Лагранжа. ADMM.
+  number: 24
+  materials: /lectures/24.pdf
+  notes: /notes/24.pdf
+  youtube: https://youtu.be/J5h5dBazg_g
+  download: https://disk.yandex.ru/i/dcKo13jUVk0H_w
+
+- title: Методы оптимизации в непрерывном времени. Gradient Flow. Accelerated Gradient Flow. Stochastic gradient flow. Central Flow.
+  number: 25
+  materials: /lectures/25.pdf
+  notes: /notes/25.pdf
+  youtube: https://youtu.be/roctZ5d4vQw
+  download: https://disk.yandex.ru/i/o_SkCnKeqeasRQ

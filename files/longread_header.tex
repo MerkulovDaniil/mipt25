@@ -1,0 +1,35 @@
+\usepackage{fontspec}
+
+\setsansfont{Palatino Linotype}[
+    Path=../files/palatino/,
+    Extension = .ttf,
+    UprightFont=palatino-Roman,
+    BoldFont=palatino-Bold,
+    ItalicFont=palatino-Italic,
+    BoldItalicFont=palatino-BoldItalic
+]
+\setmainfont{Palatino Linotype}[
+    Path=../files/palatino/,
+    Extension = .ttf,
+    UprightFont=palatino-Roman,
+    BoldFont=palatino-Bold,
+    ItalicFont=palatino-Italic,
+    BoldItalicFont=palatino-BoldItalic
+]
+
+\usepackage[textwidth=0.86\paperwidth, textheight=0.86\paperheight]{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\graphicspath{{../files/}}
+
+\newcommand{\R}{\mathbb{R}}
+
+% \pagenumbering{gobble}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[R]{\href{https://cu25.fmin.xyz}{\faGem[regular]} \hspace{0.04cm} \href{https://github.com/MerkulovDaniil/cu25}{\faGithub} \hspace{0.07cm} \href{https://t.me/fminxyz}{\faTelegram}}
+\fancyhead[L]{\href{https://fmin.xyz}{\includegraphics[height=0.35cm]{logo.pdf}} ~ \includegraphics[height=0.35cm]{logo_cu.pdf} \hspace{2pt} \textbf{Оптимизация для всех! ЦУ. 2025}}

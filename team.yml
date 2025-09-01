@@ -1,0 +1,12 @@
+- name: Даниил Меркулов
+  role: Преподаватель
+  image: photos/dm.jpeg
+- name: Александр Тришин
+  role: Ассистент
+  image: photos/at.jpeg
+- name: Денис Рубцов
+  role: Ассистент
+  image: photos/dr.jpeg
+- name: Илья Забара
+  role: Ассистент
+  image: photos/iz.jpeg
