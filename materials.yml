@@ -3,21 +3,21 @@
   materials: /lectures/1.pdf
   notes: /notes/1.pdf
   youtube: https://youtu.be/ecHJdaUnj3Q
-  download: 
+  download: https://disk.360.yandex.ru/i/jWdVsq2XeHmmxw
 
 - title: Матрично-векторное дифференцирование. Автоматическое дифференцирование. Forward\Reverse Mode. Вычислительный граф.
   number: 2
   materials: /lectures/2.pdf
   notes: /notes/2.pdf
-  youtube:
-  download:
+  youtube: https://youtu.be/5nhvgLQSB3U
+  download: https://disk.360.yandex.ru/i/nZvhBMvlGt1Pwg
 
 - title: Выпуклость. Выпуклые, афинные множества. Сумма Минковского. Выпуклые функции. Неравенство Йенсена
   number: 3
   materials: /lectures/3.pdf
   notes: /notes/3.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/PQXF5dXGhQ0
+  download: https://disk.360.yandex.ru/i/CkNbmk9JFOI0ew
 
 - title: Сильно выпуклые функции. Условие Поляка - Лоясиевича. Линейная регрессия. Регуляризация.
   number: 4
