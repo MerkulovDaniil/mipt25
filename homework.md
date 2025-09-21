@@ -271,11 +271,10 @@ toc: true
 
 ### Conjugate functions
 
-1. [5 points] Find $f^*(y)$, if $f(x) = \vert \frac12x \vert$
 1. [10 points] Find $f^*(y)$, if $f(x) = \log \left( \sum\limits_{i=1}^n e^{x_i} \right)$
-1. [10 points] Prove, that if $f(x) = g(Ax)$, then $f^*(y) = g^*(A^{-\top}y)$
-1. [15 points] Find $f^*(Y)$, if $f(X) = - \ln \det X, X \in \mathbb{S}^n_{++}$
-1. [15 points] The scalar Huber function is defined as
+1. [15 points] Derive the conjugate function of $f(\theta)=\sum_{i=1}^n \log(1+e^{-y_i\theta_i})$, where $y_i \in \{-1,1\}$.
+1. [20 points] Find $f^*(Y)$, if $f(X) = - \ln \det X, X \in \mathbb{S}^n_{++}$
+1. [20 points] The scalar Huber function is defined as
 
     $$
     f_{\text{hub}}(x) = 
@@ -285,7 +284,7 @@ toc: true
     \end{cases}
     $$
 
-    ![Scalar case](../huber_function.svg)
+    ![Scalar case](files/huber_function.svg)
 
     This convex function arises in various applications, notably in robust estimation. This problem explores the generalizations of the Huber function to $\mathbb{R}^n$. A straightforward extension to $\mathbb{R}^n$ is expressed as $f_{\text{hub}}(x_1) + \ldots + f_{\text{hub}}(x_n)$, yet this formulation is not circularly symmetric, that is, it's not invariant under the transformation of $x$ by an orthogonal matrix. A circularly symmetric extension to $\mathbb{R}^n$ is given by
 
@@ -299,12 +298,11 @@ toc: true
 
     where the subscript denotes "circularly symmetric Huber function". Show, that $f_{\text{cshub}}$ is convex. Find the conjugate function $f^*(y)$.
 
-1. [15 points] Prove that $f^{**}$ is the pointwise maximum of all affine functions that underestimate $f$, i.e., 
-    $$
-    f^{**}(x) = \max \{ g(x) : \text{$g$ is affine, $g \leq f$}\}.
-    $$
+1. [20 points] Let $\|\cdot\|$ be any norm on $\mathbb{R}^n$, and let its dual norm be $$\|y\|_* \;=\; \sup_{\|x\|\le 1}\langle y,x\rangle.$$
+    For any $t>0$, compute:
+   - [15 points] the conjugate of $f(x)=t\,\|x\|$;
+   - [5 points] explicit answers for the norms $\ell_2,\ \ell_1,\ \ell_\infty$.
 
-1. [15 points] Derive the conjugate function of $f(\theta)=\sum_{i=1}^n \log(1+e^{-y_i\theta_i})$, where $y_i \in \{-1,1\}$. 
 
 ### Subgradients
 
