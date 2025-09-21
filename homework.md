@@ -285,7 +285,7 @@ toc: true
     \end{cases}
     $$
 
-    ![Scalar case](huber_function.svg)
+    ![Scalar case](../huber_function.svg)
 
     This convex function arises in various applications, notably in robust estimation. This problem explores the generalizations of the Huber function to $\mathbb{R}^n$. A straightforward extension to $\mathbb{R}^n$ is expressed as $f_{\text{hub}}(x_1) + \ldots + f_{\text{hub}}(x_n)$, yet this formulation is not circularly symmetric, that is, it's not invariant under the transformation of $x$ by an orthogonal matrix. A circularly symmetric extension to $\mathbb{R}^n$ is given by
 
