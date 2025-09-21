@@ -153,10 +153,10 @@ window.Quarto = {
 
 <meta property="og:title" content="💀 Домашка">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://mipt25.fmin.xyz/../huber_function.svg">
+<meta property="og:image" content="https://mipt25.fmin.xyz/files/huber_function.svg">
 <meta name="twitter:title" content="💀 Домашка">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://mipt25.fmin.xyz/../huber_function.svg">
+<meta name="twitter:image" content="https://mipt25.fmin.xyz/files/huber_function.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -540,11 +540,10 @@ S = \{ x \in \mathbb{R}^2 \mid 2x_1 + x_2 \ge -2, \;\; x_1 - 2 x_2 \le 4, \;\;  
 <section id="conjugate-functions" class="level3">
 <h3 class="anchored" data-anchor-id="conjugate-functions">Conjugate functions</h3>
 <ol type="1">
-<li><p>[5 points] Find <span class="math inline">f^*(y)</span>, if <span class="math inline">f(x) = \vert \frac12x \vert</span></p></li>
 <li><p>[10 points] Find <span class="math inline">f^*(y)</span>, if <span class="math inline">f(x) = \log \left( \sum\limits_{i=1}^n e^{x_i} \right)</span></p></li>
-<li><p>[10 points] Prove, that if <span class="math inline">f(x) = g(Ax)</span>, then <span class="math inline">f^*(y) = g^*(A^{-\top}y)</span></p></li>
-<li><p>[15 points] Find <span class="math inline">f^*(Y)</span>, if <span class="math inline">f(X) = - \ln \det X, X \in \mathbb{S}^n_{++}</span></p></li>
-<li><p>[15 points] The scalar Huber function is defined as</p>
+<li><p>[15 points] Derive the conjugate function of <span class="math inline">f(\theta)=\sum_{i=1}^n \log(1+e^{-y_i\theta_i})</span>, where <span class="math inline">y_i \in \{-1,1\}</span>.</p></li>
+<li><p>[20 points] Find <span class="math inline">f^*(Y)</span>, if <span class="math inline">f(X) = - \ln \det X, X \in \mathbb{S}^n_{++}</span></p></li>
+<li><p>[20 points] The scalar Huber function is defined as</p>
 <p><span class="math display">
 f_{\text{hub}}(x) =
 \begin{cases}
@@ -554,7 +553,7 @@ f_{\text{hub}}(x) =
 </span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../huber_function.svg" class="img-fluid figure-img"></p>
+<p><img src="files/huber_function.svg" class="img-fluid figure-img"></p>
 <figcaption>Scalar case</figcaption>
 </figure>
 </div>
@@ -567,10 +566,11 @@ f_{\text{cshub}}(x) = f_{\text{hub}}(\Vert x\Vert )=
 \end{cases}
 </span></p>
 <p>where the subscript denotes “circularly symmetric Huber function”. Show, that <span class="math inline">f_{\text{cshub}}</span> is convex. Find the conjugate function <span class="math inline">f^*(y)</span>.</p></li>
-<li><p>[15 points] Prove that <span class="math inline">f^{**}</span> is the pointwise maximum of all affine functions that underestimate <span class="math inline">f</span>, i.e., <span class="math display">
-f^{**}(x) = \max \{ g(x) : \text{$g$ is affine, $g \leq f$}\}.
-</span></p></li>
-<li><p>[15 points] Derive the conjugate function of <span class="math inline">f(\theta)=\sum_{i=1}^n \log(1+e^{-y_i\theta_i})</span>, where <span class="math inline">y_i \in \{-1,1\}</span>.</p></li>
+<li><p>[20 points] Let <span class="math inline">\|\cdot\|</span> be any norm on <span class="math inline">\mathbb{R}^n</span>, and let its dual norm be <span class="math display">\|y\|_* \;=\; \sup_{\|x\|\le 1}\langle y,x\rangle.</span> For any <span class="math inline">t&gt;0</span>, compute:</p>
+<ul>
+<li>[15 points] the conjugate of <span class="math inline">f(x)=t\,\|x\|</span>;</li>
+<li>[5 points] explicit answers for the norms <span class="math inline">\ell_2,\ \ell_1,\ \ell_\infty</span>.</li>
+</ul></li>
 </ol>
 </section>
 <section id="subgradients" class="level3">
