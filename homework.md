@@ -328,6 +328,8 @@ $$
         ![Draw a normal cone for the set $S$ in these points](./normal_cone.svg)
     
     i) Show, that $N_S(x) = \{0\} \quad \forall x \in \mathbf{i }(S)$.
+
+
 ### Optimality Conditions. KKT
 
 In this section, you can consider either the arbitrary norm or the Euclidian norm if nothing else is specified.
