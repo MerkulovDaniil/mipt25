@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7429c62db862dc4a9d6959ae957f0f64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2061c8f136290605f5a3e44a3b23dc79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -582,7 +582,9 @@ f(x) = \text{Parametric ReLU}(x) = \begin{cases}
      ax &amp; \text{otherwise}.
 \end{cases}
 </span></li>
-<li>[10 points] Find <span class="math inline">\partial f(x)</span>, if <span class="math inline">f(x) = \Vert Ax - b\Vert _1</span>.</li>
+<li>[10 points] Find <span class="math inline">\partial f(x)</span>, if <span class="math display">
+f(x) = \max_{i = 1, \ldots, n} \left( -\log (a_i^T x + b)\right)
+</span></li>
 <li>[10 points] Find <span class="math inline">\partial f(x)</span>, if <span class="math inline">f(x) = e^{\Vert x\Vert}</span>.</li>
 <li>[10 points] Find <span class="math inline">\partial f(x)</span>, if <span class="math inline">f(x) = \frac12 \Vert Ax - b\Vert _2^2 + \lambda \Vert x\Vert_1, \quad \lambda &gt; 0</span>.</li>
 <li>[5 points] Let <span class="math inline">S \subseteq \mathbb{R}^n</span> be a convex set. We will call a <em>normal cone</em> of the set <span class="math inline">S</span> at a point <span class="math inline">x</span> the following set: <span class="math display">
@@ -592,16 +594,12 @@ N_S(x) = \left\{c \in \mathbb{R}^n : \langle c, y-x\rangle \leq 0 \quad \forall 
 <li><p>Draw a normal cone for a set at the points <span class="math inline">A, B, C, D, E, F</span> on the figure below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="normal_cone.svg" class="img-fluid figure-img"></p>
+<p><img src="./normal_cone.svg" class="img-fluid figure-img"></p>
 <figcaption>Draw a normal cone for the set <span class="math inline">S</span> in these points</figcaption>
 </figure>
 </div></li>
 <li><p>Show, that <span class="math inline">N_S(x) = \{0\} \quad \forall x \in \mathbf{i }(S)</span>.</p></li>
 </ol></li>
-<li>[15 points] For <span class="math inline">f(X) = \|X\|_{\text{tr}}</span>, show that subgradients at <span class="math inline">X=U \Sigma V^T</span> (this is an SVD of <span class="math inline">X</span>) satisfy <span class="math display">
-\partial f(X) \supseteq \{UV^T + W : \|W\|_{\mathrm{op}} \leq 1, \;
-U^T W = 0, \; WV = 0 \}.
-</span> Hint: you may use the fact that <span class="math inline">\|\cdot\|_{\text{tr}}</span> and <span class="math inline">\|\cdot\|_{\mathrm{op}}</span> are dual norms, which implies <span class="math inline">\langle A, B \rangle \leq \|A\|_{\text{tr}}\|B\|_{\mathrm{op}}</span> for any matrices <span class="math inline">A,B</span>, where recall <span class="math inline">\langle A,B \rangle = \text{tr}(A^T B)</span>. <strong>Bonus (5 pts):</strong> prove the other direction.</li>
 </ol>
 </section>
 <section id="optimality-conditions.-kkt" class="level3">
