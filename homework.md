@@ -313,7 +313,10 @@ toc: true
         ax & \text{otherwise}.
     \end{cases}
     $$
-1. [10 points] Find $\partial f(x)$, if $f(x) = \Vert Ax - b\Vert _1$.
+1. [10 points] Find $\partial f(x)$, if
+$$
+f(x) = \max_{i = 1, \ldots, n} \left( -\log (a_i^T x + b)\right)
+$$
 1. [10 points] Find $\partial f(x)$, if $f(x) = e^{\Vert x\Vert}$.
 1. [10 points] Find $\partial f(x)$, if $f(x) = \frac12 \Vert Ax - b\Vert _2^2 + \lambda \Vert x\Vert_1, \quad \lambda > 0$.
 1. [5 points] Let $S \subseteq \mathbb{R}^n$ be a convex set. We will call a *normal cone* of the set $S$ at a point $x$ the following set:
@@ -322,17 +325,9 @@ toc: true
     $$
     i) Draw a normal cone for a set at the points $A, B, C, D, E, F$ on the figure below: 
     
-        ![Draw a normal cone for the set $S$ in these points](normal_cone.svg)
+        ![Draw a normal cone for the set $S$ in these points](./normal_cone.svg)
     
     i) Show, that $N_S(x) = \{0\} \quad \forall x \in \mathbf{i }(S)$.
-
-1. [15 points] For $f(X) = \|X\|_{\text{tr}}$, show that subgradients at $X=U \Sigma V^T$ (this is an SVD of $X$) satisfy 
-    $$
-    \partial f(X) \supseteq \{UV^T + W : \|W\|_{\mathrm{op}} \leq 1, \;
-    U^T W = 0, \; WV = 0 \}.
-    $$
-    Hint: you may use the fact that $\|\cdot\|_{\text{tr}}$ and $\|\cdot\|_{\mathrm{op}}$ are dual norms, which implies $\langle A, B \rangle \leq \|A\|_{\text{tr}}\|B\|_{\mathrm{op}}$ for any matrices $A,B$, where recall $\langle A,B \rangle = \text{tr}(A^T B)$.  **Bonus (5 pts):** prove the other direction.   
-
 ### Optimality Conditions. KKT
 
 In this section, you can consider either the arbitrary norm or the Euclidian norm if nothing else is specified.
