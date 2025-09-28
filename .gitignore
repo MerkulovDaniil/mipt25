@@ -22,3 +22,5 @@ _site/
 **/.DS_Store
 /site_libs
 /_cu_overleaf
+
+**/*.quarto_ipynb
