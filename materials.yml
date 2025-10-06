@@ -24,20 +24,20 @@
   materials: /lectures/4.pdf
   notes: /notes/4_1.pdf
   youtube: https://youtu.be/W9I6LCIx8cc
-  download:
+  download: https://disk.360.yandex.ru/i/5nOI7HBFL1hGjA
 
 - title: Сопряженные функции. Преобразование Лежандра
   number: 4.2
   materials: /lectures/4.pdf
   notes: /notes/4_2.pdf
-  youtube:
-  download:
+  youtube: https://youtu.be/dFIhDSFEBuk
+  download: https://disk.360.yandex.ru/i/pEjgGa9iTefIxg
 
 - title: Субградиент. Субдифференциал. Теоремы Моро-Рокафеллара, Дубовицкого-Милютина. Условия оптимальности в субдифференциальной форме
   number: 5
   materials: /lectures/5.pdf
   notes: /notes/5.pdf
-  youtube: https://youtu.be/8oe7XLW4FrA
+  youtube: https://youtu.be/BXYDN3r74PI
   download:
 
 - title: Условия оптимальности. Функция Лагранжа. Множители Лагранжа. Теорема Каруша - Куна - Таккера
