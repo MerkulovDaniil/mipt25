@@ -634,14 +634,14 @@ N_S(x) = \left\{c \in \mathbb{R}^n : \langle c, y-x\rangle \leq 0 \quad \forall 
 \end{split}
 </span></p>
 <p>This problem can be considered the simplest portfolio optimization problem.</p></li>
-<li><p>[20 points] Show, that the following problem has a unique solution and find it:</p>
+<li><p>[10 points] Solve the problem:</p>
 <p><span class="math display">
 \begin{split}
-&amp; \langle C^{-1}, X\rangle - \log \det X \to \min\limits_{x \in \mathbb{R}^{n \times n} }\\
-\text{s.t. } &amp; \langle Xa, a\rangle \leq 1,
+&amp; (x - 1)^2 + (y - 1)^2 \to \min\limits_{x, y }\\
+\text{s.t. } &amp; x + y \le 1, \\
+&amp; 2x + 4y \le 3
 \end{split}
-</span></p>
-<p>where <span class="math inline">C \in \mathbb{S}^n_{++}, a \in \mathbb{R}^n \neq 0</span>. The answer should not involve inversion of the matrix <span class="math inline">C</span>.</p></li>
+</span></p></li>
 <li><p>[20 points] Derive the KKT conditions for the problem</p>
 <p><span class="math display">
 \begin{split}
