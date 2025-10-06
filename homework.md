@@ -369,16 +369,15 @@ In this section, you can consider either the arbitrary norm or the Euclidian nor
 
     This problem can be considered the simplest portfolio optimization problem.
 
-1. [20 points] Show, that the following problem has a unique solution and find it:
+1. [10 points] Solve the problem:
 
     $$
     \begin{split}
-    & \langle C^{-1}, X\rangle - \log \det X \to \min\limits_{x \in \mathbb{R}^{n \times n} }\\
-    \text{s.t. } & \langle Xa, a\rangle \leq 1,
+    & (x - 1)^2 + (y - 1)^2 \to \min\limits_{x, y }\\
+    \text{s.t. } & x + y \le 1, \\
+    & 2x + 4y \le 3 
     \end{split}
     $$
-
-    where $C \in \mathbb{S}^n_{++}, a \in \mathbb{R}^n \neq 0$. The answer should not involve inversion of the matrix $C$.
 
 1. [20 points] Derive the KKT conditions for the problem
     
