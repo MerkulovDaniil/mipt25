@@ -483,16 +483,12 @@ In this section, you can consider either the arbitrary norm or the Euclidian nor
 
     but you cannot use any numerical algorithm here.
 
-1. [5 points] Transform the following linear program into an equivalent linear program in the standard form $\left(c^\top x \to \min\limits_{x\in \mathbb{R}^n} : Ax = b,x ≥ 0\right)$:
+1. [5 points] Given set of $n$ 2D lines 
+$$
+\{ a_ix + b_i y = c_i | i \in 1, \ldots, n \}
+$$
 
-    $$
-    \begin{split}
-    & x_1−x_2 \to \min\limits_{x \in \mathbb{R}^2 }\\
-    \text{s.t. } & 2x_1 + x_2 \geq 3 \\
-    & 3x_1 − x_2 \leq 7 \\
-    & x_1 \geq 0
-    \end{split}
-    $$
+write the problem of finding a point $(x^*, y^*)$ that minimizes the sum of L2-distances between $(x^*, y^*)$ and each line as linear programming problem in the standard form $\left(c^\top x \to \min\limits_{x\in \mathbb{R}^n} : Ax = b,x ≥ 0\right)$.
 
 1. [20 points] Economic interpretation of the dual problem: Suppose a small shop makes wooden toys, where each toy train requires one piece of wood and $2$ tins of paint, while each toy boat requires one piece of wood and $1$ tin of paint. The profit on each toy train is $\$30$, and the profit on each toy boat is $\$20$. Given an inventory of $80$ pieces of wood and $100$ tins of paint, how many of each toy
 should be made to maximize the profit?
