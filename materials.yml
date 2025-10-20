@@ -51,8 +51,8 @@
   number: 7
   materials: /lectures/7.pdf
   notes: /notes/7.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/IbaY7JRFaNg
+  download: https://disk.360.yandex.ru/i/NnwxIzQOmgFsgQ
 
 - title: Линейное программирование. Транспортная задача и другие формулировки прикладных задач как ЛП. Симплекс метод для решения ЛП
   number: 8
