@@ -58,8 +58,8 @@
   number: 8
   materials: /lectures/8.pdf
   notes: /notes/8.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/kTgwioZY94Y
+  download: https://disk.yandex.ru/i/WzTk-XydqRzyOg
 
 - title: Двойственность в линейном программировании. Анализ чувствительности. 
   number: 9
