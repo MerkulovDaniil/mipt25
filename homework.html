@@ -751,11 +751,11 @@ x = \left(\frac{7}{3} , 0, \frac{1}{3}\right)^T
 <li><span class="math inline">r_{k} = 0.707^{2^k}</span>.</li>
 </ul></li>
 <li><p>[10 points] Determine the convergence or divergence of a given sequence <span class="math inline">r_k =\begin{cases} \frac{1}{k}, &amp; \text{if } k\text{ is even} \\ e^{-k}, &amp; \text{if } k\text{ is odd} \end{cases}</span>.</p></li>
-<li><p>[10 points] Determine the following sequence <span class="math inline">\{r_k\}</span> by convergence rate (linear, sublinear, superlinear). In the case of superlinear convergence, additionally, find out whether there is quadratic convergence.</p>
+<li><p>[15 points] Determine the following sequence <span class="math inline">\{r_k\}</span> by convergence rate (linear, sublinear, superlinear). In the case of superlinear convergence, additionally, find out whether there is quadratic convergence.</p>
 <p><span class="math display">
 r_k = \dfrac{1}{k!}
 </span></p></li>
-<li><p>[10 points] Determine the following sequence <span class="math inline">\{r_k\}</span> by convergence rate (linear, sublinear, superlinear). In the case of superlinear convergence, additionally find out whether there is quadratic convergence.</p>
+<li><p>[15 points] Determine the following sequence <span class="math inline">\{r_k\}</span> by convergence rate (linear, sublinear, superlinear). In the case of superlinear convergence, additionally find out whether there is quadratic convergence.</p>
 <p><span class="math display">
 r_k = \dfrac{1}{k^k}
 </span></p></li>
@@ -764,7 +764,7 @@ r_k = \dfrac{1}{k^k}
 <section id="line-search" class="level3">
 <h3 class="anchored" data-anchor-id="line-search">Line search</h3>
 <ol type="1">
-<li><p>[10 points] Consider a quadratic function <span class="math inline">f: \mathbb{R}^n \rightarrow \mathbb{R}</span>, and let us start from a point <span class="math inline">x_k \in \mathbb{R}^n</span> moving in the direction of the antigradient <span class="math inline">-\nabla f(x_k)</span>. Show that the minimum of <span class="math inline">f</span> along this direction as a function of the step size <span class="math inline">\alpha</span>, for a decreasing function at <span class="math inline">x_k</span>, satisfies Armijo’s condition for any <span class="math inline">c_1</span> in the range <span class="math inline">0 \leq c_1 \leq \frac{1}{2}</span>. Specifically, demonstrate that the following inequality holds at the optimal <span class="math inline">\alpha^*</span>:</p>
+<li><p>[15 points] Consider a quadratic function <span class="math inline">f: \mathbb{R}^n \rightarrow \mathbb{R}</span>, and let us start from a point <span class="math inline">x_k \in \mathbb{R}^n</span> moving in the direction of the antigradient <span class="math inline">-\nabla f(x_k)</span>. Show that the minimum of <span class="math inline">f</span> along this direction as a function of the step size <span class="math inline">\alpha</span>, for a decreasing function at <span class="math inline">x_k</span>, satisfies Armijo’s condition for any <span class="math inline">c_1</span> in the range <span class="math inline">0 \leq c_1 \leq \frac{1}{2}</span>. Specifically, demonstrate that the following inequality holds at the optimal <span class="math inline">\alpha^*</span>:</p>
 <p><span class="math display">
 \varphi(\alpha) = f(x_{k+1}) = f(x_k - \alpha \nabla f(x_k)) \leq f(x_k) - c_1 \alpha \|\nabla f(x_k)\|_2^2
 </span></p></li>
