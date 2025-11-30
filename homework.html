@@ -1217,11 +1217,10 @@ H_2 = \begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}, \quad \text{and} \q
 <h3 class="anchored" data-anchor-id="newton-and-quasinewton-methods">Newton and quasinewton methods</h3>
 <ol type="1">
 <li><p><strong>😱 Newton convergence issue</strong> (10 points)</p>
-<p>Consider the following function:</p>
-<p><span class="math display">
-f(x,y) = \dfrac{x^4}{4} - x^2 + 2x + (y-1)^2
+<p>Consider the following function: <span class="math display">
+f(x, y) = (1 - x)^2 + 100 (y - x^2)^2
 </span></p>
-<p>And the starting point is <span class="math inline">x_0 = (0,2)^\top</span>. How does Newton’s method behave when started from this point? How can this be explained? How does the gradient descent with fixed step <span class="math inline">\alpha = 0.01</span> and the steepest descent method behave under the same conditions? (It is not necessary to show numerical simulations in this problem).</p></li>
+<p>with a starting point of <span class="math inline">x_0 = (-1.2, 1)</span>. Implement Newton alghorithm to minimize this function and compare its convergence behavior with that of the steepest descent method, starting from same initial point. How does Newton’s method behave when started from this point?</p></li>
 <li><p><strong>Hessian-Free Newton method</strong> (20 points) In this exercise, we’ll explore the optimization of a binary logistic regression problem using various methods. Don’t worry about the size of the problem description, first 5 bullets out of 7 could be done pretty quickly. In this problem you should start with this <a href="https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Hessian_free_Newton.ipynb">colab notebook</a></p>
 <p>Given a dataset with <span class="math inline">n</span> observations, where each observation consists of a feature vector <span class="math inline">x_i</span> and an associated binary target variable <span class="math inline">y_i \in \{0,1\}</span>, the logistic regression model predicts the probability that <span class="math inline">y_i = 1</span> given <span class="math inline">x_i</span> using the logistic function. The loss function to be minimized is the negative log-likelihood of the observed outcomes under this model, summed across all observations. It has a high value when the model outputs differ significantly from the data <span class="math inline">y</span>.</p>
 <p>The binary cross-entropy loss function for a single observation <span class="math inline">(x_i, y_i)</span> is given by: <span class="math display">
