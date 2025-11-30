@@ -1058,13 +1058,13 @@ should be made to maximize the profit?
 
 1. **😱 Newton convergence issue** (10 points) 
 
-    Consider the following function: 
+    Consider the following function:
+    $$
+    f(x, y) = (1 - x)^2 + 100 (y - x^2)^2
+    $$
 
-    $$
-    f(x,y) = \dfrac{x^4}{4} - x^2 + 2x + (y-1)^2
-    $$
-    
-    And the starting point is $x_0 = (0,2)^\top$. How does Newton's method behave when started from this point? How can this be explained? How does the gradient descent with fixed step $\alpha = 0.01$ and the steepest descent method behave under the same conditions? (It is not necessary to show numerical simulations in this problem).
+    with a starting point of $x_0 = (-1.2, 1)$. Implement Newton alghorithm to minimize this function and compare its convergence behavior with that of the steepest descent method, starting from same initial point. How does Newton’s method behave when started from this point? 
+
 
 1. **Hessian-Free Newton method** (20 points) In this exercise, we'll explore the optimization of a binary logistic regression problem using various methods. Don't worry about the size of the problem description, first 5 bullets out of 7 could be done pretty quickly. In this problem you should start with this [\faPython colab notebook](https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Hessian_free_Newton.ipynb)
 
