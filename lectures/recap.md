@@ -1424,3 +1424,76 @@ This formulation ensures that the BFGS update, while comprehensive, remains comp
 * [Open In Colab](https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Quasi_Newton.ipynb)
 * [Comparison of quasi Newton methods](https://nbviewer.jupyter.org/github/fabianp/pytron/blob/master/doc/benchmark_logistic.ipynb)
 * [Some practical notes about Newton method](https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Newton.ipynb)
+
+## Задача {.t}
+
+Рассмотрим квадратичную функцию
+$$
+f(x) = 4x_1^2 + 2x_2^2,\qquad x=(x_1,x_2)^\top\in\mathbb{R}^2.
+$$
+Найдите константу сильной выпуклости $\mu$ и константу гладкости $L$ функции $f$.
+
+## Задача
+
+Рассмотрим квадратичную функцию $f(x) = \lambda x^2$ (где $\lambda > 0$, $x \in \mathbb{R}$).
+Ускоренный градиентный метод Нестерова задаётся итерацией
+$$
+\begin{aligned}
+    x_{k+1} &= y_k - \alpha \nabla f(y_k),\\
+    y_{k+1} &= x_{k+1} + \beta\,(x_{k+1} - x_k),
+\end{aligned}
+$$
+где $\alpha>0$ — шаг, $\beta\in\mathbb{R}$ — параметр «инерции».
+
+1. Выпишите итерацию метода в виде умножения вектора состояния на предыдущей итерации на матрицу
+    $$
+        \begin{pmatrix} y_{k+1} \\ x_{k+1} \end{pmatrix}
+        = T \begin{pmatrix} y_k \\ x_k \end{pmatrix},
+    $$
+    явно указав элементы матрицы $T$ через $\lambda$, $\alpha$ и $\beta$.
+2. Запишите явно вид матрицы $T$ при $\alpha = \frac{1}{\lambda}$. Запишите характеристический полином для поиска собственных чисел матрицы $T$ в этом случае $p(\lambda) = \det(T - \lambda I)$. 
+3. Найдите значения $\beta$, при которых метод будет сходиться с этим шагом.\\ \textit{Примечание:} Для сходимости итерационного процесса нужно, чтобы оба собственных числа по модулю были < 1 (спектральный радиус $\rho(T)<1$). Можно это сделать, найдя $\lambda_1(\beta), \lambda_2(\beta)$ явно и найти такие $\beta$, чтобы $|\lambda_1(\beta)| < 1, |\lambda_2(\beta)|<1$. Мы предлагаем воспользоваться готовым результатом, который называется критерий Жюри для полинома второго порядка. Пусть характеристический многочлен имеет вид $p(\lambda) = \lambda^2 + a_1 \lambda + a_2$. Тогда спектральный радиус будет меньше единицы тогда и только тогда, когда:
+    $$
+    |a_2| < 1 \qquad
+    1 + a_1 + a_2 > 0 \qquad
+    1 - a_1 + a_2 > 0
+    $$
+
+## Задача {.t}
+
+Пусть $A \in \mathbb{R}^{n \times n}$ - симметричная положительно определенная матрица, $b \in \mathbb{R}^n$. Найдите минимум функции:
+$$
+f(x, y) = \frac{1}{2}x^T A x + b^T x + \frac{1}{2}\|y\|_2^2 \to \min\limits_{x + y = c}
+$$
+где $c \in \mathbb{R}^n$ - заданный вектор. Выпишите явно решение $(x^*, y^*)$.
+
+## Задача {.t}
+
+Упростите выражение: 
+$$
+\text{tr}\left((A + \lambda I)^{-1}A\right), \quad \text{где } A \in \mathbb{S}_{++}^n, \lambda > 0
+$$
+Выразите ответ через собственные значения матрицы $A$.
+
+## Задача {.t}
+
+Предложите метод решения задачи наименьших квадратов с регуляризацией:
+$$
+\min_{x \in \mathbb{R}^n} \|Ax - b\|_2^2 + \lambda \|x\|_2^2
+$$
+где $A \in \mathbb{R}^{m \times n}$ (не обязательно квадратная), $\lambda > 0$. Опишите один итерационный метод оптимизации для её решения и приведите оценку скорости сходимости.
+
+## Задача {.t} 
+
+Докажите, что функция 
+$$
+f(x) = \log\left( \sum\limits_{i=1}^n e^{x_i}\right)
+$$
+выпуклая, используя любой дифференциальный критерий выпуклости.
+
+## Задача {.t}
+
+Пусть $X \in \mathbb{R}^{m \times n}$, где $\text{rk} X = n$, $\Omega \in \mathbb{S}_{++}^m$, и $W \in \mathbb{R}^{k \times n}$. Найдите матрицу $G \in \mathbb{R}^{k \times m}$, являющуюся решением следующей задачи оптимизации: 
+$$
+f(G) = \text{tr} \left(G \Omega G^\top \right) \to \min\limits_{GX = W}
+$$
