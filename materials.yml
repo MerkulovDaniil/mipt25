@@ -65,108 +65,115 @@
   number: 9
   materials: /lectures/9.pdf
   notes: /notes/9.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/_as1ms286UE
+  download: https://disk.yandex.ru/i/p4yIbWYL7Ta5Ow
 
 - title: Классификация и обозначения в задачах оптимизации. Скорость сходимости. Линейный поиск. Неточная одномерная оптимизация. Правила Армихо  - Гольдштейна. Условие Вульфа
   number: 10
   materials: /lectures/10.pdf
   notes: /notes/10.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/F7g4YdQaqcE
+  download: https://disk.yandex.ru/i/0wcp5Gu3rLSQ0A
 
 - title: Градиентный спуск. Теоремы сходимости в гладком случае (выпуклые, сильно выпуклые, PL).
   number: 11
   materials: /lectures/11.pdf
   notes: /notes/11.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/ym3d4mhkVA4
+  download: https://disk.yandex.ru/i/FOUDXKOrZt3GUQ
 
-- title: Нижние оценки для градиентных методов. Ускоренные градиентные методы. Полиномы Чебышева. Метод Поляка, Нестерова.
+- title: Нижние оценки для градиентных методов. Ускоренный метод и Полиномы Чебышева. 
   number: 12
   materials: /lectures/12.pdf
   notes: /notes/12.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/VMwfL9i8kfo
+  download: https://disk.360.yandex.ru/i/vfvT3DzWZnl8FA
 
-- title:  Метод сопряженных направлений. Ортогонализация Грамма - Шмидта. Понятие $A$-ортогональных векторов. Метод сопряженных градиентов
+- title: Метод тяжёлого шарика. Метод Нестерова.
   number: 13
   materials: /lectures/13.pdf
   notes: /notes/13.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/Gd5ZYmZxgHI
+  download: 
 
-- title: Концепция методов адаптивной метрики. Метод Ньютона. Квазиньютоновские методы
+- title:  Метод сопряженных направлений. Ортогонализация Грамма - Шмидта. Понятие $A$-ортогональных векторов. Метод сопряженных градиентов
   number: 14
   materials: /lectures/14.pdf
   notes: /notes/14.pdf
   youtube: 
   download:
 
-- title: Градиентные методы в условных задачах оптимизации - метод проекции градиента. Метод Франк - Вульфа. Идея метода зеркального спуска
+- title: Повторение материалов первого семестра. Решение задач.
+  number: 14.5
+  materials: /lectures/recap.pdf
+  notes: /notes/recap.pdf
+  youtube: 
+  download:
+
+- title: Концепция методов адаптивной метрики. Метод Ньютона. Квазиньютоновские методы
   number: 15
   materials: /lectures/15.pdf
   notes: /notes/15.pdf
   youtube: 
   download:
 
-- title: Субградиентный метод. Теоремы сходимости в негладком случае (выпуклый случай). Особенности работы градиентного метода в практических негладких задачах. Задача наименьших квадратов с $l_1$ регуляризацией. Метод проекции субградиента. Метод зеркального спуска.
+- title: Градиентные методы в условных задачах оптимизации - метод проекции градиента. Метод Франк - Вульфа. Идея метода зеркального спуска
   number: 16
   materials: /lectures/16.pdf
+  notes: /notes/16.pdf
+  youtube: 
+  download:
+
+- title: Субградиентный метод. Теоремы сходимости в негладком случае (выпуклый случай). Особенности работы градиентного метода в практических негладких задачах. Задача наименьших квадратов с $l_1$ регуляризацией. Метод проекции субградиента. Метод зеркального спуска.
+  number: 17
+  materials: /lectures/17.pdf
   notes:
   youtube: 
   download: 
 
 - title: Проксимальный градиентный метод.
-  number: 17
-  materials: /lectures/17.pdf
-  notes: /notes/17.pdf
-  youtube: 
-  download:
-
-- title: "Введение в стохастические градиентные методы. Батч, эпоха. Сходимость SGD. Методы редукции дисперсии: SAG, SVRG."
   number: 18
   materials: /lectures/18.pdf
   notes: /notes/18.pdf
   youtube: 
   download:
 
-- title: "Практичные стохастические градиентные методы. Адаптивные градиентные методы. AdamW. Матричные методы. Muon, Shampoo, NanoGPT speedrun, AlgoPerf banchmark"
+- title: "Введение в стохастические градиентные методы. Батч, эпоха. Сходимость SGD. Методы редукции дисперсии: SAG, SVRG."
   number: 19
   materials: /lectures/19.pdf
   notes: /notes/19.pdf
   youtube: 
   download:
 
-- title: Удивительные сюжеты из мира обучения нейросетей с точки зрения методов оптимизации. Проекция функции потерь нейронной сети на прямую, плоскость. Инициализация. Grokking. Double Descent. Обобщающая способность моделей машинного обучения.
+- title: "Практические стохастические градиентные методы. Адаптивные градиентные методы. AdamW. Матричные методы. Muon, Shampoo, NanoGPT speedrun, AlgoPerf banchmark"
   number: 20
   materials: /lectures/20.pdf
   notes: /notes/20.pdf
   youtube: 
   download:
 
-- title: Вопросы обучения больших моделей. Lars, Lamb. Learning rate schedulers. Warm-up, Cooldown. MultiGPU training. Large batch training. Чекпоинтинг активаций.
+- title: Удивительные сюжеты из мира обучения нейросетей с точки зрения методов оптимизации. Проекция функции потерь нейронной сети на прямую, плоскость. Инициализация. Grokking. Double Descent. Обобщающая способность моделей машинного обучения.
   number: 21
   materials: /lectures/21.pdf
   notes: /notes/21.pdf
   youtube: 
   download:
 
-- title: Двойственные методы оптимизации. Прямо-двойственные методы. Метод двойственного градиентного подъёма. Метод модифицированной функции Лагранжа. ADMM.
+- title: Вопросы обучения больших моделей. Lars, Lamb. Learning rate schedulers. Warm-up, Cooldown. MultiGPU training. Large batch training. Чекпоинтинг активаций.
   number: 22
   materials: /lectures/22.pdf
   notes: /notes/22.pdf
   youtube: 
   download:
 
-- title: Методы оптимизации в непрерывном времени. Gradient Flow. Accelerated Gradient Flow. Stochastic gradient flow. Central Flow.
+- title: Двойственные методы оптимизации. Прямо-двойственные методы. Метод двойственного градиентного подъёма. Метод модифицированной функции Лагранжа. ADMM.
   number: 23
   materials: /lectures/23.pdf
   notes: /notes/23.pdf
   youtube: 
   download:
 
-- title: 
+- title: Методы оптимизации в непрерывном времени. Gradient Flow. Accelerated Gradient Flow. Stochastic gradient flow. Central Flow.
   number: 24
   materials: /lectures/24.pdf
   notes: /notes/24.pdf
@@ -177,5 +184,12 @@
   number: 25
   materials: /lectures/25.pdf
   notes: /notes/25.pdf
+  youtube: 
+  download:
+
+- title: 
+  number: 26
+  materials: /lectures/26.pdf
+  notes: /notes/26.pdf
   youtube: 
   download:
