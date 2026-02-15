@@ -94,13 +94,13 @@
   materials: /lectures/13.pdf
   notes: /notes/13.pdf
   youtube: https://youtu.be/Gd5ZYmZxgHI
-  download: 
+  download: https://disk.360.yandex.ru/i/cftf_20idg3sVg
 
 - title:  Метод сопряженных направлений. Ортогонализация Грамма - Шмидта. Понятие $A$-ортогональных векторов. Метод сопряженных градиентов
   number: 14
   materials: /lectures/14.pdf
   notes: /notes/14.pdf
-  youtube: 
+  youtube: https://youtu.be/7gj7B2RE9k4
   download:
 
 - title: Повторение материалов первого семестра. Решение задач.

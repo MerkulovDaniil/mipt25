@@ -16,6 +16,20 @@ contributes:
       include-in-header:
         - text: |
             <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/copy-tex.min.js" integrity="sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ/cv4Tw3YsMGEUinb8wQ1TJSlNojntcMv3DZ9Cxt7G2DY7gR" crossorigin="anonymous"></script>
+      include-after-body:
+        - text: |
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                  ],
+                  ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+                });
+              });
+            </script>
 
   filters:
     - custom_callout.lua
