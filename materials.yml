@@ -101,7 +101,7 @@
   materials: /lectures/14.pdf
   notes: /notes/14.pdf
   youtube: https://youtu.be/7gj7B2RE9k4
-  download:
+  download: https://disk.360.yandex.ru/i/IKEQf6-uv4TbrQ
 
 - title: Повторение материалов первого семестра. Решение задач.
   number: 14.5
@@ -114,10 +114,10 @@
   number: 15
   materials: /lectures/15.pdf
   notes: /notes/15.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/comv8i3X3mI
+  download: https://disk.360.yandex.ru/i/vC6RpLOF-EeV_Q
 
-- title: Градиентные методы в условных задачах оптимизации - метод проекции градиента. Метод Франк - Вульфа. Идея метода зеркального спуска
+- title: Градиентные методы в условных задачах оптимизации - метод проекции градиента. Метод Франк - Вульфа. Метод зеркального спуска
   number: 16
   materials: /lectures/16.pdf
   notes: /notes/16.pdf
