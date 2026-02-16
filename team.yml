@@ -4,9 +4,15 @@
 - name: Александр Тришин
   role: Ассистент
   image: photos/at.jpeg
+- name: Алексей Ребриков
+  role: Ассистент
+  image: photos/ar.jpeg
 - name: Денис Рубцов
   role: Ассистент
   image: photos/dr.jpeg
 - name: Илья Забара
   role: Ассистент
   image: photos/iz.jpeg
+- name: Фанис Хафизов
+  role: Ассистент
+  image: photos/fk.jpeg
