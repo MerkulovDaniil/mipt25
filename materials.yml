@@ -121,8 +121,8 @@
   number: 16
   materials: /lectures/16.pdf
   notes: /notes/16.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/1hEdowkltnc
+  download: https://disk.360.yandex.com/i/tb4b0U9RSVZQrg
 
 - title: Субградиентный метод. Теоремы сходимости в негладком случае (выпуклый случай). Особенности работы градиентного метода в практических негладких задачах. Задача наименьших квадратов с $l_1$ регуляризацией. Метод проекции субградиента. Метод зеркального спуска.
   number: 17
