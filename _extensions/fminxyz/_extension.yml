@@ -31,6 +31,15 @@ contributes:
               });
             </script>
 
+    typst:
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ
+      shortcodes:
+        - shortcodes.lua
+      filters:
+        - fix_typst_images.lua
+
   filters:
     - custom_callout.lua
     - inline_plotly.lua
