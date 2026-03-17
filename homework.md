@@ -1063,7 +1063,7 @@ should be made to maximize the profit?
     f(x, y) = (1 - x)^2 + 100 (y - x^2)^2
     $$
 
-    with a starting point of $x_0 = (-1.2, 1)$. Implement Newton alghorithm to minimize this function and compare its convergence behavior with that of the steepest descent method, starting from same initial point. How does Newton’s method behave when started from this point? 
+    with a starting point of $x_0 = (-1.2, 1)$. Implement Newton algorithm to minimize this function and compare its convergence behavior with that of the steepest descent method, starting from same initial point. How does Newton’s method behave when started from this point?
 
 
 1. **Hessian-Free Newton method** (20 points) In this exercise, we'll explore the optimization of a binary logistic regression problem using various methods. Don't worry about the size of the problem description, first 5 bullets out of 7 could be done pretty quickly. In this problem you should start with this [\faPython colab notebook](https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Hessian_free_Newton.ipynb)
@@ -1090,7 +1090,7 @@ should be made to maximize the profit?
     \min_w f(w) = \min_w -\sum_{i=1}^n \left[ y_i \log\left(p\left(y_i=1 | x_i; w\right)\right) + \left(1-y_i\right) \log\left(1-p(y_i=1 | x_i; w)\right) \right]
     $$
 
-    This is a convex optimization problem and can be solved using gradient-based methods such as gradient descent, Newton's method, or more sophisticated optimization algorithms often available in machine learning libraries. However, it is the problem is often together with $l_2$ regularization:
+    This is a convex optimization problem and can be solved using gradient-based methods such as gradient descent, Newton's method, or more sophisticated optimization algorithms often available in machine learning libraries. However, the problem is often combined with $l_2$ regularization:
 
     $$
     \min_w f(w) = \min_w -\sum_{i=1}^n \left[ y_i \log\left(p\left(y_i=1 | x_i; w\right)\right) + \left(1-y_i\right) \log\left(1-p(y_i=1 | x_i; w)\right) \right] + \frac{\mu}{2} \|w\|_2^2
@@ -1201,7 +1201,7 @@ should be made to maximize the profit?
 
 1.  **Projection onto the Birkhoff Polytope using Frank-Wolfe** [20 points]
 
-    In a recent [book](https://arxiv.org/pdf/2211.14103) authors presented the following comparison table with complexities of linear minimizations and projections on some convex sets up to an additive error $\epsilon$ in the Euclidean norm. When $\epsilon$ is missing, there is no additive error. The $\tilde{\mathcal{O}}$ hides polylogarithmic factors in the dimensions and polynomial factors in constants related to thedistancetothe optimum. For the nuclear norm ball, i.e., the spectrahedron, $\nu$ denotes the number of non-zero entries and $\sigma_1$ denotes the top singular value of the projected matrix.
+    In a recent [book](https://arxiv.org/pdf/2211.14103) authors presented the following comparison table with complexities of linear minimizations and projections on some convex sets up to an additive error $\epsilon$ in the Euclidean norm. When $\epsilon$ is missing, there is no additive error. The $\tilde{\mathcal{O}}$ hides polylogarithmic factors in the dimensions and polynomial factors in constants related to the distance to the optimum. For the nuclear norm ball, i.e., the spectrahedron, $\nu$ denotes the number of non-zero entries and $\sigma_1$ denotes the top singular value of the projected matrix.
 
     | **Set**   | **Linear minimization**  | **Projection**    |
     |------------------------|--------------------|---------|
@@ -1314,16 +1314,18 @@ should be made to maximize the profit?
 
         propose an algorithm to find a point $x \in U \cap V$. You can assume that $U \cap V$ is not empty. Your algorithm must be specific and provably converging (although you do not need to prove it and you can simply refer to the lecture slides).
 
-    * [15 points] Implement your algorithm with the following data: $n = 2$, $y = (3, 2)$, $\sigma_1 = 0.5$, $\sigma_2 = 1$, 
+    * [15 points] Implement your algorithm with the following data: $n = 2$, $y = (3, 2)$, $\sigma_1 = 0.5$, $\sigma_2 = 1$,
 
         $$
-        A = \begin{bmatrix} 
+        A = \begin{bmatrix}
         1 & 0 \\
-        -1 & 1 
+        -1 & 1
         \end{bmatrix},
         $$
 
-        Plot the objective value of your optimization problem versus the number of iterations. Choose the following initial points $x_0 = [(2, -1), (0, 0), (1, 2)]$. 
+        Plot the objective value of your optimization problem versus the number of iterations. Choose the following initial points $x_0 = [(2, -1), (0, 0), (1, 2)]$.
+
+        *Hint on projections.* To compute $\mathbf{dist}(x, U)$ and $\mathbf{dist}(x, V)$ you need projections onto $U$ and $V$. Projection onto $V = \{x : \|\Sigma x\|_\infty \leq 1\}$ is coordinate-wise clipping: $[\Pi_V(x)]_i = \mathrm{clip}(x_i, -1/\sigma_i, 1/\sigma_i)$. For the ellipsoid $U = \{x : \|A(x - y)\|_2 \leq 1\}$, use the substitution $z = A(x - y)$. If $\|z\|_2 \leq 1$, the point is already in $U$. Otherwise, the projection in $z$-space is simply $z^* = z / \|z\|_2$ (projection onto the unit ball), and you recover $x^* = A^{-1} z^* + y$.
 
     * [5 points] Discussion: compare the three curves. Describe the properties of this optimization problem. 
     
@@ -1384,13 +1386,13 @@ should be made to maximize the profit?
     \min_{W \in \mathbb{R}^{c \times d}} -\sum_{i=1}^{N} \log P(y_i | x_i; W) + \lambda \| W \|_1
     $$
 
-    where $N$ is the number of training examples, $\lambda$ is the regularization parameter, and $\| W \|_1$ is the L1 norm of the weight matrix, which promotes sparsity in the solution. I suggest you to vectorize matrix and add $1$-vector norm.
+    where $N$ is the number of training examples, $\lambda$ is the regularization parameter, and $\| W \|_1 = \sum_{ij} |W_{ij}|$ is the element-wise L1 norm of the weight matrix, which promotes sparsity in the solution.
 
     We will solve the sparse softmax regression problem using the subgradient method and the proximal gradient method, both incorporating L1 regularization. The proximal gradient method is particularly useful for optimization problems involving non-smooth regularizers like the L1 norm. We will use 3 class classification problem of [Predicting Students' Dropout and Academic Success](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success). In this problem you should start with this [\faPython colab notebook](https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Proximal_softmax_regression.ipynb)
 
-    1. [4 points] Write down exact formulation of subgradient method and proximal gradient method here (you can not use any optimization problems in this formulation).
-    1. [6 points] Choose $\lambda = 0$. Solve the softmax regression problem using subgradient descent and proximal gradient descent. Find the highest learning (individually), acceptable for both methods to converge. Report convergence curves and report final sparsity of both methods. Draw you conclusions.
-    1. [10 points] Solve non-smooth problem and fill the following table. For each value of $\lambda$ provide convergence curves.
+    1. [4 points] Write down the explicit update rules for the subgradient method and the proximal gradient method (i.e., express $W_{k+1}$ in terms of $W_k$ without using $\arg\min$).
+    1. [6 points] Choose $\lambda = 0$. Solve the softmax regression problem using subgradient descent and proximal gradient descent. Find the highest learning rate (individually) acceptable for both methods to converge. Report convergence curves and report final sparsity of both methods. Draw your conclusions.
+    1. [10 points] Solve the non-smooth problem and fill the following table. For each value of $\lambda$ provide convergence curves. If a method does not reach the specified tolerance within 10000 iterations, report "DNC" (did not converge).
 
     Report the number of iterations needed to reach specified primal gaps for each method. Present the results in the following markdown table:
 
