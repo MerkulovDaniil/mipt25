@@ -1221,7 +1221,7 @@ H_2 = \begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}, \quad \text{and} \q
 <p>Consider the following function: <span class="math display">
 f(x, y) = (1 - x)^2 + 100 (y - x^2)^2
 </span></p>
-<p>with a starting point of <span class="math inline">x_0 = (-1.2, 1)</span>. Implement Newton alghorithm to minimize this function and compare its convergence behavior with that of the steepest descent method, starting from same initial point. How does Newton’s method behave when started from this point?</p></li>
+<p>with a starting point of <span class="math inline">x_0 = (-1.2, 1)</span>. Implement Newton algorithm to minimize this function and compare its convergence behavior with that of the steepest descent method, starting from same initial point. How does Newton’s method behave when started from this point?</p></li>
 <li><p><strong>Hessian-Free Newton method</strong> (20 points) In this exercise, we’ll explore the optimization of a binary logistic regression problem using various methods. Don’t worry about the size of the problem description, first 5 bullets out of 7 could be done pretty quickly. In this problem you should start with this <a href="https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Hessian_free_Newton.ipynb">colab notebook</a></p>
 <p>Given a dataset with <span class="math inline">n</span> observations, where each observation consists of a feature vector <span class="math inline">x_i</span> and an associated binary target variable <span class="math inline">y_i \in \{0,1\}</span>, the logistic regression model predicts the probability that <span class="math inline">y_i = 1</span> given <span class="math inline">x_i</span> using the logistic function. The loss function to be minimized is the negative log-likelihood of the observed outcomes under this model, summed across all observations. It has a high value when the model outputs differ significantly from the data <span class="math inline">y</span>.</p>
 <p>The binary cross-entropy loss function for a single observation <span class="math inline">(x_i, y_i)</span> is given by: <span class="math display">
@@ -1236,7 +1236,7 @@ f(w) = -\sum_{i=1}^n \left[ y_i \log(p(y_i=1 | x_i; w)) + (1-y_i) \log(1-p(y_i=1
 <p>Therefore, the optimization problem in logistic regression is: <span class="math display">
 \min_w f(w) = \min_w -\sum_{i=1}^n \left[ y_i \log\left(p\left(y_i=1 | x_i; w\right)\right) + \left(1-y_i\right) \log\left(1-p(y_i=1 | x_i; w)\right) \right]
 </span></p>
-<p>This is a convex optimization problem and can be solved using gradient-based methods such as gradient descent, Newton’s method, or more sophisticated optimization algorithms often available in machine learning libraries. However, it is the problem is often together with <span class="math inline">l_2</span> regularization:</p>
+<p>This is a convex optimization problem and can be solved using gradient-based methods such as gradient descent, Newton’s method, or more sophisticated optimization algorithms often available in machine learning libraries. However, the problem is often combined with <span class="math inline">l_2</span> regularization:</p>
 <p><span class="math display">
 \min_w f(w) = \min_w -\sum_{i=1}^n \left[ y_i \log\left(p\left(y_i=1 | x_i; w\right)\right) + \left(1-y_i\right) \log\left(1-p(y_i=1 | x_i; w)\right) \right] + \frac{\mu}{2} \|w\|_2^2
 </span></p>
@@ -1329,7 +1329,7 @@ f(w) = -\sum_{i=1}^n \left[ y_i \log(p(y_i=1 | x_i; w)) + (1-y_i) \log(1-p(y_i=1
 <h3 class="anchored" data-anchor-id="conditional-gradient-methods">Conditional gradient methods</h3>
 <ol type="1">
 <li><p><strong>Projection onto the Birkhoff Polytope using Frank-Wolfe</strong> [20 points]</p>
-<p>In a recent <a href="https://arxiv.org/pdf/2211.14103">book</a> authors presented the following comparison table with complexities of linear minimizations and projections on some convex sets up to an additive error <span class="math inline">\epsilon</span> in the Euclidean norm. When <span class="math inline">\epsilon</span> is missing, there is no additive error. The <span class="math inline">\tilde{\mathcal{O}}</span> hides polylogarithmic factors in the dimensions and polynomial factors in constants related to thedistancetothe optimum. For the nuclear norm ball, i.e., the spectrahedron, <span class="math inline">\nu</span> denotes the number of non-zero entries and <span class="math inline">\sigma_1</span> denotes the top singular value of the projected matrix.</p>
+<p>In a recent <a href="https://arxiv.org/pdf/2211.14103">book</a> authors presented the following comparison table with complexities of linear minimizations and projections on some convex sets up to an additive error <span class="math inline">\epsilon</span> in the Euclidean norm. When <span class="math inline">\epsilon</span> is missing, there is no additive error. The <span class="math inline">\tilde{\mathcal{O}}</span> hides polylogarithmic factors in the dimensions and polynomial factors in constants related to the distance to the optimum. For the nuclear norm ball, i.e., the spectrahedron, <span class="math inline">\nu</span> denotes the number of non-zero entries and <span class="math inline">\sigma_1</span> denotes the top singular value of the projected matrix.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 45%">
@@ -1469,7 +1469,8 @@ B_n = \{ X \in \mathbb{R}^{n \times n} \mid X_{ij} \ge 0 \;\forall i,j, \quad X 
   -1 &amp; 1
   \end{bmatrix},
   </span></p>
-<p>Plot the objective value of your optimization problem versus the number of iterations. Choose the following initial points <span class="math inline">x_0 = [(2, -1), (0, 0), (1, 2)]</span>.</p></li>
+<p>Plot the objective value of your optimization problem versus the number of iterations. Choose the following initial points <span class="math inline">x_0 = [(2, -1), (0, 0), (1, 2)]</span>.</p>
+<p><em>Hint on projections.</em> To compute <span class="math inline">\mathbf{dist}(x, U)</span> and <span class="math inline">\mathbf{dist}(x, V)</span> you need projections onto <span class="math inline">U</span> and <span class="math inline">V</span>. Projection onto <span class="math inline">V = \{x : \|\Sigma x\|_\infty \leq 1\}</span> is coordinate-wise clipping: <span class="math inline">[\Pi_V(x)]_i = \mathrm{clip}(x_i, -1/\sigma_i, 1/\sigma_i)</span>. For the ellipsoid <span class="math inline">U = \{x : \|A(x - y)\|_2 \leq 1\}</span>, use the substitution <span class="math inline">z = A(x - y)</span>. If <span class="math inline">\|z\|_2 \leq 1</span>, the point is already in <span class="math inline">U</span>. Otherwise, the projection in <span class="math inline">z</span>-space is simply <span class="math inline">z^* = z / \|z\|_2</span> (projection onto the unit ball), and you recover <span class="math inline">x^* = A^{-1} z^* + y</span>.</p></li>
 <li><p>[5 points] Discussion: compare the three curves. Describe the properties of this optimization problem.</p>
 <ul>
 <li>Is it convex/strongly convex?</li>
@@ -1528,12 +1529,12 @@ P(y = j | x; W) = \frac{e^{W_j^T x}}{\sum\limits_{i=1}^{c} e^{W_i^T x}}
 <p><span class="math display">
 \min_{W \in \mathbb{R}^{c \times d}} -\sum_{i=1}^{N} \log P(y_i | x_i; W) + \lambda \| W \|_1
 </span></p>
-<p>where <span class="math inline">N</span> is the number of training examples, <span class="math inline">\lambda</span> is the regularization parameter, and <span class="math inline">\| W \|_1</span> is the L1 norm of the weight matrix, which promotes sparsity in the solution. I suggest you to vectorize matrix and add <span class="math inline">1</span>-vector norm.</p>
+<p>where <span class="math inline">N</span> is the number of training examples, <span class="math inline">\lambda</span> is the regularization parameter, and <span class="math inline">\| W \|_1 = \sum_{ij} |W_{ij}|</span> is the element-wise L1 norm of the weight matrix, which promotes sparsity in the solution.</p>
 <p>We will solve the sparse softmax regression problem using the subgradient method and the proximal gradient method, both incorporating L1 regularization. The proximal gradient method is particularly useful for optimization problems involving non-smooth regularizers like the L1 norm. We will use 3 class classification problem of <a href="https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success">Predicting Students’ Dropout and Academic Success</a>. In this problem you should start with this <a href="https://colab.research.google.com/github/MerkulovDaniil/optim/blob/master/assets/Notebooks/Proximal_softmax_regression.ipynb">colab notebook</a></p>
 <ol type="1">
-<li>[4 points] Write down exact formulation of subgradient method and proximal gradient method here (you can not use any optimization problems in this formulation).</li>
-<li>[6 points] Choose <span class="math inline">\lambda = 0</span>. Solve the softmax regression problem using subgradient descent and proximal gradient descent. Find the highest learning (individually), acceptable for both methods to converge. Report convergence curves and report final sparsity of both methods. Draw you conclusions.</li>
-<li>[10 points] Solve non-smooth problem and fill the following table. For each value of <span class="math inline">\lambda</span> provide convergence curves.</li>
+<li>[4 points] Write down the explicit update rules for the subgradient method and the proximal gradient method (i.e., express <span class="math inline">W_{k+1}</span> in terms of <span class="math inline">W_k</span> without using <span class="math inline">\arg\min</span>).</li>
+<li>[6 points] Choose <span class="math inline">\lambda = 0</span>. Solve the softmax regression problem using subgradient descent and proximal gradient descent. Find the highest learning rate (individually) acceptable for both methods to converge. Report convergence curves and report final sparsity of both methods. Draw your conclusions.</li>
+<li>[10 points] Solve the non-smooth problem and fill the following table. For each value of <span class="math inline">\lambda</span> provide convergence curves. If a method does not reach the specified tolerance within 10000 iterations, report “DNC” (did not converge).</li>
 </ol>
 <p>Report the number of iterations needed to reach specified primal gaps for each method. Present the results in the following markdown table:</p>
 <table class="caption-top table">
