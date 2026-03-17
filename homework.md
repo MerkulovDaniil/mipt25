@@ -1577,7 +1577,43 @@ should be made to maximize the profit?
 
     ![](logreg_VR.svg)
 
+1. **Batch size scaling law for SGD.** [10 points]
+
+    In the lectures, we discussed the linear scaling rule: when the batch size $B$ is increased by a factor $k$, the learning rate $\eta$ should also be increased by a factor $k$ to maintain similar training dynamics. This leads to the rule $\eta / B = \text{const}$.
+
+    Verify this scaling law empirically by training a shallow MLP on Fashion MNIST.
+
+    1. [5 points] For each batch size $B \in \{32, 64, 128, 256, 512, 1024\}$, train the model for 30 epochs with several learning rates $\eta$. For each $(B, \eta)$ pair, record the final test accuracy.
+    1. [5 points] Plot the final test accuracy as a function of $B$ (on a log scale) for several fixed values of $\eta / B$. Does the linear scaling rule hold (i.e., is accuracy roughly constant along each $\eta/B = \text{const}$ curve)? At what batch sizes does it start to break down? Discuss the results in the context of the critical batch size concept from the lectures.
+
+1. **Matrix Sensing: GD vs SGD generalization.** [15 points]
+
+    Let $X^* \in \mathbb{R}^{n \times n}$ be an unknown rank-$r$ symmetric positive semidefinite (PSD) matrix with unit 2-norm. Given $m$ symmetric measurement matrices $A_1, \ldots, A_m \in \mathbb{R}^{n \times n}$, we observe linear measurements $y_i = \langle A_i, X^* \rangle = \text{trace}(A_i^T X^*)$. We parametrize $X = UU^\top$ with $U \in \mathbb{R}^{n \times r}$ and minimize
+
+    $$
+    L(U) = \frac{1}{m} \sum_{i=1}^m L_i(U), \quad L_i(U) = \frac{1}{2}(y_i - \langle A_i, UU^\top \rangle)^2
+    $$
+
+    Note that $\nabla L_i(U) = -2 \cdot (y_i - \langle A_i, UU^\top \rangle) \cdot A_i U$.
+
+    1. [5 points] Implement GD and SGD for this problem. Generate synthetic data: $n = 10$, $r = 2$, $m = 200$. Use $X^* = VV^\top / \|VV^\top\|_2$ where $V \in \mathbb{R}^{n \times r}$ has i.i.d. $\mathcal{N}(0,1)$ entries. Generate symmetric measurement matrices $A_i = (G_i + G_i^\top)/2$ where $G_i$ has i.i.d. $\mathcal{N}(0,1)$ entries. Generate an additional $m_{\text{test}} = 100$ measurements for evaluation. Compare GD and SGD (with different batch sizes $B$) in terms of **train loss** and **test loss**. Report your observations.
+    1. [5 points] Study the effect of **batch size** $B$ on generalization: for $B \in \{1, 5, 10, 50, m\}$, plot final train and test loss. Does SGD with small batch size achieve better generalization (lower test loss) than GD?
+    1. [5 points] Study the effect of **problem rank** $r$ and **dimension** $n$ on the GD-vs-SGD generalization gap. Draw conclusions about when stochastic methods have a clear advantage.
+
 ### Neural network training
+
+1. **Deep Chain: how depth affects the optimization landscape.** [15 points]
+
+    Consider the scalar deep linear network loss:
+    $$
+    L(w) = \frac{1}{2}(w_L w_{L-1} \cdots w_1 - 1)^2,
+    $$
+    where $w = (w_1, w_2, \ldots, w_L) \in \mathbb{R}^L$ are scalar parameters.
+
+    1. [4 points] Compute the gradient $\nabla L(w)$ and the Hessian $\nabla^2 L(w)$ analytically. Verify your formulas numerically using JAX automatic differentiation.
+    1. [4 points] For several depths $L \in \{2, 5, 10, 20, 50\}$, randomly initialize $w_i \in [0, 1]$ and compute the Hessian eigenvalues. What do you observe as depth $L$ increases? Plot the condition number of the Hessian as a function of $L$.
+    1. [4 points] Assume all $w_i$ are equal: $w_i = w$ for some fixed $w \in (0, 1)$. Study the Hessian as the depth $L \to \infty$. Show that all Hessian eigenvalues converge to $0$, implying the landscape becomes increasingly flat.
+    1. [3 points] Run gradient descent on this problem for different depths $L$. Compare convergence speed. Relate your observations to the Hessian analysis above.
 
 1. **Anomaly detection with neural network.** [30 points] 
 
