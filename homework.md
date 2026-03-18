@@ -1577,6 +1577,54 @@ should be made to maximize the profit?
 
     ![](logreg_VR.svg)
 
+1. **Polyak Stepsize: convergence without knowing the smoothness constant.** [15 points]
+
+    The Polyak stepsize (1987) is the first truly adaptive method: it converges without knowing the smoothness parameter $\ell$. Consider a convex function $L$ with minimum at $w^*$. The Polyak stepsize in the GD update $w^{k+1} = w^k - \eta_k \nabla L(w^k)$ is:
+    $$
+    \eta_k = \frac{L(w^k) - L(w^*)}{\|\nabla L(w^k)\|^2}.
+    $$
+
+    Assume bounded gradients: $\|\nabla L(w)\|^2 \leq G^2$ for all $w \in \mathbb{R}^d$.
+
+    1. [2 points] Expand $\frac{1}{2}\|w^{k+1} - w^*\|^2$ by substituting the GD update. Use convexity to upper-bound the inner product term: $-\langle \nabla L(w^k), w^k - w^* \rangle \leq -(L(w^k) - L(w^*))$.
+    1. [3 points] Show that the Polyak stepsize $\eta_k = \frac{L(w^k) - L(w^*)}{\|\nabla L(w^k)\|^2}$ is the value of $\eta$ that **minimizes** the right-hand side of the bound from part (a). Verify it is indeed a minimizer (not a maximizer).
+    1. [3 points] Substitute the Polyak stepsize into the bound. Use the gradient bound $\|\nabla L(w^k)\|^2 \leq G^2$ to show:
+        $$
+        G^2\|w^{k+1} - w^*\|^2 \leq G^2\|w^k - w^*\|^2 - (L(w^k) - L(w^*))^2.
+        $$
+    1. [3 points] Telescope the sum over $k$ iterations and show:
+        $$
+        \frac{1}{G^2(k+1)} \sum_{i=0}^k [L(w^i) - L(w^*)]^2 \leq \frac{\|w^0 - w^*\|^2}{k+1}.
+        $$
+    1. [2 points] Conclude that $\min_{i \in [k]} L(w^i) - L(w^*) \leq \frac{G\|w^0 - w^*\|}{\sqrt{k+1}} = O(1/\sqrt{k})$.
+    1. [2 points] **Remark:** This rate holds for *any* convex function — even non-smooth! The only catch is that you need to know $L(w^*)$. In what practical setting is this assumption natural? *Hint: think about overparametrized models where $L(w^*) = 0$.*
+
+1. **Polyak Stepsize with smoothness: improved O(1/k) rate.** [10 points]
+
+    Now assume additionally that $L$ is $\ell$-smooth, i.e., $\|\nabla L(w)\|^2 \leq 2\ell(L(w) - L(w^*))$.
+
+    1. [5 points] Starting from the same bound as Exercise 1 part (c), use the smoothness inequality to eliminate $\|\nabla L(w^k)\|^2$ and show:
+        $$
+        \frac{1}{2}\|w^{k+1} - w^*\|^2 \leq \frac{1}{2}\|w^k - w^*\|^2 - \frac{(L(w^k) - L(w^*))^2}{4\ell(L(w^k) - L(w^*))}.
+        $$
+        Simplify to get a bound involving $L(w^k) - L(w^*)$ linearly (not squared!).
+    1. [3 points] Telescope and conclude: $\min_{i \in [k]} L(w^i) - L(w^*) = O(1/k)$. Compare with the $O(1/\sqrt{k})$ rate from Exercise 1 — smoothness gives a quadratic speedup!
+    1. [2 points] Show that for the simple 1D quadratic $L(w) = \frac{\ell}{2}w^2$, the Polyak stepsize equals $\frac{1}{2\ell}$ — close to the optimal GD stepsize $\frac{1}{\ell}$. The method automatically adapts!
+
+1. **Adam non-convergence on a quadratic.** [10 points]
+
+    Consider the simple 1D loss $L(w) = \frac{\ell}{2}w^2$, so $\nabla L(w) = \ell w$ and $\nabla^2 L(w) = \ell$. The simplified Adam update (no $\epsilon$, $\beta_1 = 0$) is:
+    $$
+    \begin{cases}
+    w^{k+1} = w^k - \frac{\eta}{\sqrt{v^k}} \ell w^k \\
+    v^{k+1} = \beta_2 v^k + (1-\beta_2) \ell^2 (w^{k+1})^2
+    \end{cases}
+    $$
+
+    1. [3 points] Using the EMA closed-form recursion $x^k = \beta^k x^0 + \sum_{i=1}^k \beta^{k-i}(1-\beta)g^i$, write down a closed-form expression for $v^k$ in terms of $v^0$, $\beta_2$, $\ell$, and the iterates $w^1, \ldots, w^k$.
+    1. [3 points] Define $a^k = 1 - \frac{\eta\ell}{\sqrt{v^k}}$ so that $w^{k+1} = a^k w^k$. Derive the condition for $w^{k+1} = w^k$ (stationary point). Show that this requires either $w^k = 0$ or $a^k = 1$ (i.e., $v^k \to \infty$, which diverges).
+    1. [4 points] Find the **oscillating** stationary point: show that $(w^{k+1})^2 = (w^k)^2$ and $v^{k+1} = v^k$ can be achieved with $a^k = -1$, i.e., $\sqrt{v^k} = \eta\ell/2$. Derive $(w^k)^2 = \eta^2/4$. This proves Adam can get stuck oscillating instead of converging to 0 — even on the simplest quadratic!
+
 1. **Batch size scaling law for SGD.** [10 points]
 
     In the lectures, we discussed the linear scaling rule: when the batch size $B$ is increased by a factor $k$, the learning rate $\eta$ should also be increased by a factor $k$ to maintain similar training dynamics. This leads to the rule $\eta / B = \text{const}$.
@@ -1601,6 +1649,18 @@ should be made to maximize the profit?
     1. [5 points] Study the effect of **problem rank** $r$ and **dimension** $n$ on the GD-vs-SGD generalization gap. Draw conclusions about when stochastic methods have a clear advantage.
 
 ### Neural network training
+
+1. **Noise helps choosing minima.** [8 points]
+
+    Consider the nonconvex Styblinski-Tang function:
+    $$
+    L(w_1, w_2) = \frac{1}{2}\left[w_1^4 - 16w_1^2 + 5w_1 + w_2^4 - 16w_2^2 + 5w_2\right]
+    $$
+
+    This function has multiple local minima. Run gradient descent with stepsize $0.02$, starting from $(w_1, w_2) = (-1.4, 0.5)$:
+
+    1. [4 points] **Without noise:** run standard GD for 2000 iterations. Plot the loss landscape as a 2D contour and overlay the GD trajectory. Where does GD converge? Plot the loss vs iteration.
+    1. [4 points] **With noise:** run noisy GD with the update $w^k = w^{k-1} - 0.02 \nabla L(w^k) + 30\epsilon$, where $\epsilon \sim \mathcal{N}(0, I)$. Run for 2000 iterations. Overlay the noisy trajectory on the same contour plot. What do you observe? Does noisy GD explore the landscape and visit multiple minima? Compare the final loss values. *This demonstrates a key insight: stochastic noise in SGD can help escape poor local minima.*
 
 1. **Deep Chain: how depth affects the optimization landscape.** [15 points]
 
