@@ -1584,32 +1584,16 @@ should be made to maximize the profit?
     \eta_k = \frac{L(w^k) - L(w^*)}{\|\nabla L(w^k)\|^2}.
     $$
 
-    Assume bounded gradients: $\|\nabla L(w)\|^2 \leq G^2$ for all $w \in \mathbb{R}^d$.
+    Assume bounded gradients: $\|\nabla L(w)\|^2 \leq G^2$ for all $w \in \mathbb{R}^d$. A modern reference: [arXiv:2002.10542](https://arxiv.org/abs/2002.10542).
 
-    1. [2 points] Expand $\frac{1}{2}\|w^{k+1} - w^*\|^2$ by substituting the GD update. Use convexity to upper-bound the inner product term: $-\langle \nabla L(w^k), w^k - w^* \rangle \leq -(L(w^k) - L(w^*))$.
-    1. [3 points] Show that the Polyak stepsize $\eta_k = \frac{L(w^k) - L(w^*)}{\|\nabla L(w^k)\|^2}$ is the value of $\eta$ that **minimizes** the right-hand side of the bound from part (a). Verify it is indeed a minimizer (not a maximizer).
-    1. [3 points] Substitute the Polyak stepsize into the bound. Use the gradient bound $\|\nabla L(w^k)\|^2 \leq G^2$ to show:
+    1. [5 points] Prove that gradient descent with the Polyak stepsize converges at rate $O(1/\sqrt{k})$:
         $$
-        G^2\|w^{k+1} - w^*\|^2 \leq G^2\|w^k - w^*\|^2 - (L(w^k) - L(w^*))^2.
+        \min_{i \in [k]} L(w^i) - L(w^*) \leq \frac{G\|w^0 - w^*\|}{\sqrt{k+1}}.
         $$
-    1. [3 points] Telescope the sum over $k$ iterations and show:
-        $$
-        \frac{1}{G^2(k+1)} \sum_{i=0}^k [L(w^i) - L(w^*)]^2 \leq \frac{\|w^0 - w^*\|^2}{k+1}.
-        $$
-    1. [2 points] Conclude that $\min_{i \in [k]} L(w^i) - L(w^*) \leq \frac{G\|w^0 - w^*\|}{\sqrt{k+1}} = O(1/\sqrt{k})$.
-    1. [2 points] **Remark:** This rate holds for *any* convex function — even non-smooth! The only catch is that you need to know $L(w^*)$. In what practical setting is this assumption natural? *Hint: think about overparametrized models where $L(w^*) = 0$.*
-
-1. **Polyak Stepsize with smoothness: improved O(1/k) rate.** [10 points]
-
-    Now assume additionally that $L$ is $\ell$-smooth, i.e., $\|\nabla L(w)\|^2 \leq 2\ell(L(w) - L(w^*))$.
-
-    1. [5 points] Starting from the same bound as Exercise 1 part (c), use the smoothness inequality to eliminate $\|\nabla L(w^k)\|^2$ and show:
-        $$
-        \frac{1}{2}\|w^{k+1} - w^*\|^2 \leq \frac{1}{2}\|w^k - w^*\|^2 - \frac{(L(w^k) - L(w^*))^2}{4\ell(L(w^k) - L(w^*))}.
-        $$
-        Simplify to get a bound involving $L(w^k) - L(w^*)$ linearly (not squared!).
-    1. [3 points] Telescope and conclude: $\min_{i \in [k]} L(w^i) - L(w^*) = O(1/k)$. Compare with the $O(1/\sqrt{k})$ rate from Exercise 1 — smoothness gives a quadratic speedup!
-    1. [2 points] Show that for the simple 1D quadratic $L(w) = \frac{\ell}{2}w^2$, the Polyak stepsize equals $\frac{1}{2\ell}$ — close to the optimal GD stepsize $\frac{1}{\ell}$. The method automatically adapts!
+        *Hint: expand $\|w^{k+1} - w^*\|^2$, use convexity, show that the Polyak stepsize minimizes the resulting bound, telescope.*
+    1. [3 points] This rate holds for *any* convex function — even non-smooth, without knowing $\ell$! The catch: you need $L(w^*)$. In what practical setting is this natural? When can the assumption $\|\nabla L(w)\|^2 \leq G^2$ fail?
+    1. [5 points] Now assume additionally that $L$ is $\ell$-smooth. Using the inequality $\|\nabla L(w)\|^2 \leq 2\ell(L(w) - L(w^*))$, prove that the rate improves to $O(1/k)$.
+    1. [2 points] For the quadratic $L(w) = \frac{\ell}{2}w^2$, compute the Polyak stepsize explicitly. Compare it with the optimal GD stepsize $1/\ell$. What do you observe?
 
 1. **Adam non-convergence on a quadratic.** [10 points]
 
