@@ -1866,6 +1866,44 @@ P(y = j | x; W) = \frac{e^{W_j^T x}}{\sum\limits_{i=1}^{c} e^{W_i^T x}}
 <p>Describe the obtained convergence and compare methods.</p>
 <p><img src="lls_VR.svg" class="img-fluid"></p>
 <p><img src="logreg_VR.svg" class="img-fluid"></p></li>
+<li><p><strong>Polyak Stepsize: convergence without knowing the smoothness constant.</strong> [15 points]</p>
+<p>The Polyak stepsize (1987) is the first truly adaptive method: it converges without knowing the smoothness parameter <span class="math inline">\ell</span>. Consider a convex function <span class="math inline">L</span> with minimum at <span class="math inline">w^*</span>. The Polyak stepsize in the GD update <span class="math inline">w^{k+1} = w^k - \eta_k \nabla L(w^k)</span> is: <span class="math display">
+\eta_k = \frac{L(w^k) - L(w^*)}{\|\nabla L(w^k)\|^2}.
+</span></p>
+<p>Assume bounded gradients: <span class="math inline">\|\nabla L(w)\|^2 \leq G^2</span> for all <span class="math inline">w \in \mathbb{R}^d</span>.</p>
+<ol type="1">
+<li>[2 points] Expand <span class="math inline">\frac{1}{2}\|w^{k+1} - w^*\|^2</span> by substituting the GD update. Use convexity to upper-bound the inner product term: <span class="math inline">-\langle \nabla L(w^k), w^k - w^* \rangle \leq -(L(w^k) - L(w^*))</span>.</li>
+<li>[3 points] Show that the Polyak stepsize <span class="math inline">\eta_k = \frac{L(w^k) - L(w^*)}{\|\nabla L(w^k)\|^2}</span> is the value of <span class="math inline">\eta</span> that <strong>minimizes</strong> the right-hand side of the bound from part (a). Verify it is indeed a minimizer (not a maximizer).</li>
+<li>[3 points] Substitute the Polyak stepsize into the bound. Use the gradient bound <span class="math inline">\|\nabla L(w^k)\|^2 \leq G^2</span> to show: <span class="math display">
+G^2\|w^{k+1} - w^*\|^2 \leq G^2\|w^k - w^*\|^2 - (L(w^k) - L(w^*))^2.
+</span></li>
+<li>[3 points] Telescope the sum over <span class="math inline">k</span> iterations and show: <span class="math display">
+\frac{1}{G^2(k+1)} \sum_{i=0}^k [L(w^i) - L(w^*)]^2 \leq \frac{\|w^0 - w^*\|^2}{k+1}.
+</span></li>
+<li>[2 points] Conclude that <span class="math inline">\min_{i \in [k]} L(w^i) - L(w^*) \leq \frac{G\|w^0 - w^*\|}{\sqrt{k+1}} = O(1/\sqrt{k})</span>.</li>
+<li>[2 points] <strong>Remark:</strong> This rate holds for <em>any</em> convex function — even non-smooth! The only catch is that you need to know <span class="math inline">L(w^*)</span>. In what practical setting is this assumption natural? <em>Hint: think about overparametrized models where <span class="math inline">L(w^*) = 0</span>.</em></li>
+</ol></li>
+<li><p><strong>Polyak Stepsize with smoothness: improved O(1/k) rate.</strong> [10 points]</p>
+<p>Now assume additionally that <span class="math inline">L</span> is <span class="math inline">\ell</span>-smooth, i.e., <span class="math inline">\|\nabla L(w)\|^2 \leq 2\ell(L(w) - L(w^*))</span>.</p>
+<ol type="1">
+<li>[5 points] Starting from the same bound as Exercise 1 part (c), use the smoothness inequality to eliminate <span class="math inline">\|\nabla L(w^k)\|^2</span> and show: <span class="math display">
+\frac{1}{2}\|w^{k+1} - w^*\|^2 \leq \frac{1}{2}\|w^k - w^*\|^2 - \frac{(L(w^k) - L(w^*))^2}{4\ell(L(w^k) - L(w^*))}.
+</span> Simplify to get a bound involving <span class="math inline">L(w^k) - L(w^*)</span> linearly (not squared!).</li>
+<li>[3 points] Telescope and conclude: <span class="math inline">\min_{i \in [k]} L(w^i) - L(w^*) = O(1/k)</span>. Compare with the <span class="math inline">O(1/\sqrt{k})</span> rate from Exercise 1 — smoothness gives a quadratic speedup!</li>
+<li>[2 points] Show that for the simple 1D quadratic <span class="math inline">L(w) = \frac{\ell}{2}w^2</span>, the Polyak stepsize equals <span class="math inline">\frac{1}{2\ell}</span> — close to the optimal GD stepsize <span class="math inline">\frac{1}{\ell}</span>. The method automatically adapts!</li>
+</ol></li>
+<li><p><strong>Adam non-convergence on a quadratic.</strong> [10 points]</p>
+<p>Consider the simple 1D loss <span class="math inline">L(w) = \frac{\ell}{2}w^2</span>, so <span class="math inline">\nabla L(w) = \ell w</span> and <span class="math inline">\nabla^2 L(w) = \ell</span>. The simplified Adam update (no <span class="math inline">\epsilon</span>, <span class="math inline">\beta_1 = 0</span>) is: <span class="math display">
+\begin{cases}
+w^{k+1} = w^k - \frac{\eta}{\sqrt{v^k}} \ell w^k \\
+v^{k+1} = \beta_2 v^k + (1-\beta_2) \ell^2 (w^{k+1})^2
+\end{cases}
+</span></p>
+<ol type="1">
+<li>[3 points] Using the EMA closed-form recursion <span class="math inline">x^k = \beta^k x^0 + \sum_{i=1}^k \beta^{k-i}(1-\beta)g^i</span>, write down a closed-form expression for <span class="math inline">v^k</span> in terms of <span class="math inline">v^0</span>, <span class="math inline">\beta_2</span>, <span class="math inline">\ell</span>, and the iterates <span class="math inline">w^1, \ldots, w^k</span>.</li>
+<li>[3 points] Define <span class="math inline">a^k = 1 - \frac{\eta\ell}{\sqrt{v^k}}</span> so that <span class="math inline">w^{k+1} = a^k w^k</span>. Derive the condition for <span class="math inline">w^{k+1} = w^k</span> (stationary point). Show that this requires either <span class="math inline">w^k = 0</span> or <span class="math inline">a^k = 1</span> (i.e., <span class="math inline">v^k \to \infty</span>, which diverges).</li>
+<li>[4 points] Find the <strong>oscillating</strong> stationary point: show that <span class="math inline">(w^{k+1})^2 = (w^k)^2</span> and <span class="math inline">v^{k+1} = v^k</span> can be achieved with <span class="math inline">a^k = -1</span>, i.e., <span class="math inline">\sqrt{v^k} = \eta\ell/2</span>. Derive <span class="math inline">(w^k)^2 = \eta^2/4</span>. This proves Adam can get stuck oscillating instead of converging to 0 — even on the simplest quadratic!</li>
+</ol></li>
 <li><p><strong>Batch size scaling law for SGD.</strong> [10 points]</p>
 <p>In the lectures, we discussed the linear scaling rule: when the batch size <span class="math inline">B</span> is increased by a factor <span class="math inline">k</span>, the learning rate <span class="math inline">\eta</span> should also be increased by a factor <span class="math inline">k</span> to maintain similar training dynamics. This leads to the rule <span class="math inline">\eta / B = \text{const}</span>.</p>
 <p>Verify this scaling law empirically by training a shallow MLP on Fashion MNIST.</p>
@@ -1889,6 +1927,15 @@ L(U) = \frac{1}{m} \sum_{i=1}^m L_i(U), \quad L_i(U) = \frac{1}{2}(y_i - \langle
 <section id="neural-network-training" class="level3">
 <h3 class="anchored" data-anchor-id="neural-network-training">Neural network training</h3>
 <ol type="1">
+<li><p><strong>Noise helps choosing minima.</strong> [8 points]</p>
+<p>Consider the nonconvex Styblinski-Tang function: <span class="math display">
+L(w_1, w_2) = \frac{1}{2}\left[w_1^4 - 16w_1^2 + 5w_1 + w_2^4 - 16w_2^2 + 5w_2\right]
+</span></p>
+<p>This function has multiple local minima. Run gradient descent with stepsize <span class="math inline">0.02</span>, starting from <span class="math inline">(w_1, w_2) = (-1.4, 0.5)</span>:</p>
+<ol type="1">
+<li>[4 points] <strong>Without noise:</strong> run standard GD for 2000 iterations. Plot the loss landscape as a 2D contour and overlay the GD trajectory. Where does GD converge? Plot the loss vs iteration.</li>
+<li>[4 points] <strong>With noise:</strong> run noisy GD with the update <span class="math inline">w^k = w^{k-1} - 0.02 \nabla L(w^k) + 30\epsilon</span>, where <span class="math inline">\epsilon \sim \mathcal{N}(0, I)</span>. Run for 2000 iterations. Overlay the noisy trajectory on the same contour plot. What do you observe? Does noisy GD explore the landscape and visit multiple minima? Compare the final loss values. <em>This demonstrates a key insight: stochastic noise in SGD can help escape poor local minima.</em></li>
+</ol></li>
 <li><p><strong>Deep Chain: how depth affects the optimization landscape.</strong> [15 points]</p>
 <p>Consider the scalar deep linear network loss: <span class="math display">
 L(w) = \frac{1}{2}(w_L w_{L-1} \cdots w_1 - 1)^2,
