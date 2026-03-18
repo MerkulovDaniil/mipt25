@@ -1866,11 +1866,39 @@ P(y = j | x; W) = \frac{e^{W_j^T x}}{\sum\limits_{i=1}^{c} e^{W_i^T x}}
 <p>Describe the obtained convergence and compare methods.</p>
 <p><img src="lls_VR.svg" class="img-fluid"></p>
 <p><img src="logreg_VR.svg" class="img-fluid"></p></li>
+<li><p><strong>Batch size scaling law for SGD.</strong> [10 points]</p>
+<p>In the lectures, we discussed the linear scaling rule: when the batch size <span class="math inline">B</span> is increased by a factor <span class="math inline">k</span>, the learning rate <span class="math inline">\eta</span> should also be increased by a factor <span class="math inline">k</span> to maintain similar training dynamics. This leads to the rule <span class="math inline">\eta / B = \text{const}</span>.</p>
+<p>Verify this scaling law empirically by training a shallow MLP on Fashion MNIST.</p>
+<ol type="1">
+<li>[5 points] For each batch size <span class="math inline">B \in \{32, 64, 128, 256, 512, 1024\}</span>, train the model for 30 epochs with several learning rates <span class="math inline">\eta</span>. For each <span class="math inline">(B, \eta)</span> pair, record the final test accuracy.</li>
+<li>[5 points] Plot the final test accuracy as a function of <span class="math inline">B</span> (on a log scale) for several fixed values of <span class="math inline">\eta / B</span>. Does the linear scaling rule hold (i.e., is accuracy roughly constant along each <span class="math inline">\eta/B = \text{const}</span> curve)? At what batch sizes does it start to break down? Discuss the results in the context of the critical batch size concept from the lectures.</li>
+</ol></li>
+<li><p><strong>Matrix Sensing: GD vs SGD generalization.</strong> [15 points]</p>
+<p>Let <span class="math inline">X^* \in \mathbb{R}^{n \times n}</span> be an unknown rank-<span class="math inline">r</span> symmetric positive semidefinite (PSD) matrix with unit 2-norm. Given <span class="math inline">m</span> symmetric measurement matrices <span class="math inline">A_1, \ldots, A_m \in \mathbb{R}^{n \times n}</span>, we observe linear measurements <span class="math inline">y_i = \langle A_i, X^* \rangle = \text{trace}(A_i^T X^*)</span>. We parametrize <span class="math inline">X = UU^\top</span> with <span class="math inline">U \in \mathbb{R}^{n \times r}</span> and minimize</p>
+<p><span class="math display">
+L(U) = \frac{1}{m} \sum_{i=1}^m L_i(U), \quad L_i(U) = \frac{1}{2}(y_i - \langle A_i, UU^\top \rangle)^2
+</span></p>
+<p>Note that <span class="math inline">\nabla L_i(U) = -2 \cdot (y_i - \langle A_i, UU^\top \rangle) \cdot A_i U</span>.</p>
+<ol type="1">
+<li>[5 points] Implement GD and SGD for this problem. Generate synthetic data: <span class="math inline">n = 10</span>, <span class="math inline">r = 2</span>, <span class="math inline">m = 200</span>. Use <span class="math inline">X^* = VV^\top / \|VV^\top\|_2</span> where <span class="math inline">V \in \mathbb{R}^{n \times r}</span> has i.i.d. <span class="math inline">\mathcal{N}(0,1)</span> entries. Generate symmetric measurement matrices <span class="math inline">A_i = (G_i + G_i^\top)/2</span> where <span class="math inline">G_i</span> has i.i.d. <span class="math inline">\mathcal{N}(0,1)</span> entries. Generate an additional <span class="math inline">m_{\text{test}} = 100</span> measurements for evaluation. Compare GD and SGD (with different batch sizes <span class="math inline">B</span>) in terms of <strong>train loss</strong> and <strong>test loss</strong>. Report your observations.</li>
+<li>[5 points] Study the effect of <strong>batch size</strong> <span class="math inline">B</span> on generalization: for <span class="math inline">B \in \{1, 5, 10, 50, m\}</span>, plot final train and test loss. Does SGD with small batch size achieve better generalization (lower test loss) than GD?</li>
+<li>[5 points] Study the effect of <strong>problem rank</strong> <span class="math inline">r</span> and <strong>dimension</strong> <span class="math inline">n</span> on the GD-vs-SGD generalization gap. Draw conclusions about when stochastic methods have a clear advantage.</li>
+</ol></li>
 </ol>
 </section>
 <section id="neural-network-training" class="level3">
 <h3 class="anchored" data-anchor-id="neural-network-training">Neural network training</h3>
 <ol type="1">
+<li><p><strong>Deep Chain: how depth affects the optimization landscape.</strong> [15 points]</p>
+<p>Consider the scalar deep linear network loss: <span class="math display">
+L(w) = \frac{1}{2}(w_L w_{L-1} \cdots w_1 - 1)^2,
+</span> where <span class="math inline">w = (w_1, w_2, \ldots, w_L) \in \mathbb{R}^L</span> are scalar parameters.</p>
+<ol type="1">
+<li>[4 points] Compute the gradient <span class="math inline">\nabla L(w)</span> and the Hessian <span class="math inline">\nabla^2 L(w)</span> analytically. Verify your formulas numerically using JAX automatic differentiation.</li>
+<li>[4 points] For several depths <span class="math inline">L \in \{2, 5, 10, 20, 50\}</span>, randomly initialize <span class="math inline">w_i \in [0, 1]</span> and compute the Hessian eigenvalues. What do you observe as depth <span class="math inline">L</span> increases? Plot the condition number of the Hessian as a function of <span class="math inline">L</span>.</li>
+<li>[4 points] Assume all <span class="math inline">w_i</span> are equal: <span class="math inline">w_i = w</span> for some fixed <span class="math inline">w \in (0, 1)</span>. Study the Hessian as the depth <span class="math inline">L \to \infty</span>. Show that all Hessian eigenvalues converge to <span class="math inline">0</span>, implying the landscape becomes increasingly flat.</li>
+<li>[3 points] Run gradient descent on this problem for different depths <span class="math inline">L</span>. Compare convergence speed. Relate your observations to the Hessian analysis above.</li>
+</ol></li>
 <li><p><strong>Anomaly detection with neural network.</strong> [30 points]</p>
 <p>In this problem we will try to detect anomalies in time series with neural network.</p>
 <p><strong>[Plotly Filter Error: Could not read file: anomaly_detection.html. Error: anomaly_detection.html: No such file or directory]</strong></p>
