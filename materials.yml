@@ -135,17 +135,17 @@
   number: 18
   materials: /lectures/18.pdf
   notes: /notes/18.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/ZCO2I9slfxk
+  download: https://disk.360.yandex.ru/i/wu7ertXkbqkkcQ
 
-- title: "Введение в стохастические градиентные методы. Батч, эпоха. Сходимость SGD. Методы редукции дисперсии: SAG, SVRG."
+- title: "Введение в стохастические градиентные методы. Батч, эпоха. Сходимость SGD."
   number: 19
   materials: /lectures/19.pdf
   notes: /notes/19.pdf
-  youtube: 
-  download:
+  youtube: https://youtu.be/I2LR-Bxik1U
+  download: https://disk.360.yandex.ru/i/C2LqJFh7JZe_NA
 
-- title: "Практические стохастические градиентные методы. Адаптивные градиентные методы. AdamW. Матричные методы. Muon, Shampoo, NanoGPT speedrun, AlgoPerf banchmark"
+- title: " Методы редукции дисперсии: SAG, SVRG. Практические стохастические градиентные методы. Адаптивные градиентные методы. AdamW. Матричные методы. Muon, Shampoo, NanoGPT speedrun, AlgoPerf banchmark"
   number: 20
   materials: /lectures/20.pdf
   notes: /notes/20.pdf
