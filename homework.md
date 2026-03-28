@@ -1325,7 +1325,7 @@ should be made to maximize the profit?
 
         Plot the objective value of your optimization problem versus the number of iterations. Choose the following initial points $x_0 = [(2, -1), (0, 0), (1, 2)]$.
 
-        *Hint on projections.* To compute $\mathbf{dist}(x, U)$ and $\mathbf{dist}(x, V)$ you need projections onto $U$ and $V$. Projection onto $V = \{x : \|\Sigma x\|_\infty \leq 1\}$ is coordinate-wise clipping: $[\Pi_V(x)]_i = \mathrm{clip}(x_i, -1/\sigma_i, 1/\sigma_i)$. For the ellipsoid $U = \{x : \|A(x - y)\|_2 \leq 1\}$, use the substitution $z = A(x - y)$. If $\|z\|_2 \leq 1$, the point is already in $U$. Otherwise, the projection in $z$-space is simply $z^* = z / \|z\|_2$ (projection onto the unit ball), and you recover $x^* = A^{-1} z^* + y$.
+        *Hint on projections.* To compute $\mathbf{dist}(x, U)$ and $\mathbf{dist}(x, V)$ you need projections onto $U$ and $V$. Projection onto $V = \{x : \|\Sigma x\|_\infty \leq 1\}$ is coordinate-wise clipping: $[\Pi_V(x)]_i = \mathrm{clip}(x_i, -1/\sigma_i, 1/\sigma_i)$. For the ellipsoid $U = \{x : \|A(x - y)\|_2 \leq 1\}$: if $\|A(x-y)\|_2 \leq 1$, the point is already in $U$. Otherwise, by KKT, the projection satisfies $(I + \lambda A^T A)\, \Pi_U(x) = x + \lambda A^T A y$ for some $\lambda > 0$ chosen so that $\|A(\Pi_U(x) - y)\|_2 = 1$. Find this $\lambda$ by one-dimensional root finding (e.g., `scipy.optimize.brentq`).
 
     * [5 points] Discussion: compare the three curves. Describe the properties of this optimization problem. 
     
