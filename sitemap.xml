@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mipt25.fmin.xyz/experiments/benchmarx_subgrad.html</loc>
-    <lastmod>2026-03-30T01:01:59.529Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mipt25.fmin.xyz/homework.html</loc>
-    <lastmod>2026-03-30T01:01:59.876Z</lastmod>
-  </url>
-  <url>
     <loc>https://mipt25.fmin.xyz/program.html</loc>
-    <lastmod>2026-03-30T01:02:01.031Z</lastmod>
+    <lastmod>2026-04-10T17:51:28.576Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mipt25.fmin.xyz/experiments/benchmarx_subgrad.html</loc>
+    <lastmod>2026-04-10T17:51:27.086Z</lastmod>
   </url>
   <url>
     <loc>https://mipt25.fmin.xyz/projects.html</loc>
-    <lastmod>2026-03-30T01:02:01.031Z</lastmod>
+    <lastmod>2026-04-10T17:51:28.576Z</lastmod>
   </url>
   <url>
     <loc>https://mipt25.fmin.xyz/index.html</loc>
-    <lastmod>2026-03-30T01:01:59.876Z</lastmod>
+    <lastmod>2026-04-10T17:51:27.432Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mipt25.fmin.xyz/homework.html</loc>
+    <lastmod>2026-04-10T17:51:27.432Z</lastmod>
   </url>
 </urlset>
