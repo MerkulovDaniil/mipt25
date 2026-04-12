@@ -1,7 +1,12 @@
 project:
   type: website
   output-dir: _site
-  resources: 
+  render:
+    - "**/*.md"
+    - "**/*.qmd"
+    - "**/*.ipynb"
+    - "!experiments/muon_experiments.ipynb"
+  resources:
     - "*.mp4"
     - "*.txt"
     - "*.csv"
