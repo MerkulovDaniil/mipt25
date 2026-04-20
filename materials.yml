@@ -152,18 +152,18 @@
   youtube: 
   download:
 
-- title: Удивительные сюжеты из мира обучения нейросетей с точки зрения методов оптимизации. Проекция функции потерь нейронной сети на прямую, плоскость. Инициализация. Grokking. Double Descent. Обобщающая способность моделей машинного обучения.
+- title: Методы редукции дисперсии. SAG, SVRG. Адаптивные градиентные методы. Adagrad, RMSProp, Adam, AdamW. AlgoPerf benchmark. NanoGPT speedrun. Shampoo и Muon.
   number: 21
   materials: /lectures/21.pdf
   notes: /notes/21.pdf
-  youtube: 
+  youtube:
   download:
 
-- title: Вопросы обучения больших моделей. Lars, Lamb. Learning rate schedulers. Warm-up, Cooldown. MultiGPU training. Large batch training. Чекпоинтинг активаций.
+- title: "Muon: ортогонализация градиентов и спектральная оптимизация. LMO и сопряжённые нормы. Polar factor. Newton-Schulz. Ky Fan нормы."
   number: 22
   materials: /lectures/22.pdf
   notes: /notes/22.pdf
-  youtube: 
+  youtube:
   download:
 
 - title: Обучение нейросетевых моделей и больших моделей. Mixed precision. Чекпоинтинг активаций. Learning rate schedulers. Large batch training. LARS, LAMB. MultiGPU training. ZeRO. LoRA.
