@@ -166,11 +166,11 @@
   youtube: 
   download:
 
-- title: Двойственные методы оптимизации. Прямо-двойственные методы. Метод двойственного градиентного подъёма. Метод модифицированной функции Лагранжа. ADMM.
+- title: Обучение нейросетевых моделей и больших моделей. Mixed precision. Чекпоинтинг активаций. Learning rate schedulers. Large batch training. LARS, LAMB. MultiGPU training. ZeRO. LoRA.
   number: 23
   materials: /lectures/23.pdf
   notes: /notes/23.pdf
-  youtube: 
+  youtube:
   download:
 
 - title: Методы оптимизации в непрерывном времени. Gradient Flow. Accelerated Gradient Flow. Stochastic gradient flow. Central Flow.
