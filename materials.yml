@@ -173,7 +173,7 @@
   youtube:
   download:
 
-- title: Методы оптимизации в непрерывном времени. Gradient Flow. Accelerated Gradient Flow. Stochastic gradient flow. Central Flow.
+- title: Двойственные методы: двойственный градиентный подъём, метод дополненного лагранжиана, ADMM
   number: 24
   materials: /lectures/24.pdf
   notes: /notes/24.pdf
