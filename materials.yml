@@ -145,51 +145,37 @@
   youtube: https://youtu.be/I2LR-Bxik1U
   download: https://disk.360.yandex.ru/i/C2LqJFh7JZe_NA
 
-- title: " Методы редукции дисперсии: SAG, SVRG. Практические стохастические градиентные методы. Адаптивные градиентные методы. AdamW. Матричные методы. Muon, Shampoo, NanoGPT speedrun, AlgoPerf banchmark"
+- title: Методы редукции дисперсии. Адаптивные методы и Muon
   number: 20
   materials: /lectures/20.pdf
   notes: /notes/20.pdf
-  youtube: 
+  youtube:
   download:
 
-- title: Методы редукции дисперсии. SAG, SVRG. Адаптивные градиентные методы. Adagrad, RMSProp, Adam, AdamW. AlgoPerf benchmark. NanoGPT speedrun. Shampoo и Muon.
+- title: "Muon: ортогонализация градиентов и спектральная оптимизация. LMO и сопряжённые нормы. Polar factor. Newton-Schulz. Ky Fan нормы."
   number: 21
   materials: /lectures/21.pdf
   notes: /notes/21.pdf
   youtube:
   download:
 
-- title: "Muon: ортогонализация градиентов и спектральная оптимизация. LMO и сопряжённые нормы. Polar factor. Newton-Schulz. Ky Fan нормы."
+- title: Обучение нейросетевых моделей и больших моделей. Mixed precision. Чекпоинтинг активаций. Learning rate schedulers. Large batch training. LARS, LAMB. MultiGPU training. ZeRO. LoRA.
   number: 22
   materials: /lectures/22.pdf
   notes: /notes/22.pdf
   youtube:
   download:
 
-- title: Обучение нейросетевых моделей и больших моделей. Mixed precision. Чекпоинтинг активаций. Learning rate schedulers. Large batch training. LARS, LAMB. MultiGPU training. ZeRO. LoRA.
+- title: "Двойственные методы: двойственный градиентный подъём, метод дополненного лагранжиана, ADMM"
   number: 23
   materials: /lectures/23.pdf
   notes: /notes/23.pdf
   youtube:
   download:
 
-- title: Двойственные методы: двойственный градиентный подъём, метод дополненного лагранжиана, ADMM
+- title: Gradient Flow. Accelerated gradient flow.
   number: 24
   materials: /lectures/24.pdf
-  notes: /notes/24.pdf
-  youtube: 
-  download:
-
-- title: 
-  number: 25
-  materials: /lectures/25.pdf
-  notes: /notes/25.pdf
-  youtube: 
-  download:
-
-- title: 
-  number: 26
-  materials: /lectures/26.pdf
-  notes: /notes/26.pdf
-  youtube: 
+  notes:
+  youtube:
   download:
