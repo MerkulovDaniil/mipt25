@@ -1,10 +1,11 @@
 """
-Experiment 1: SVRG vs SGD on L2-regularized logistic regression.
-Demonstrates: GD (fastest) > SVRG (linear, between) > SGD dec (slow O(1/k)) > SGD const (noise floor).
+Experiment 1: VR methods vs SGD on L2-regularized logistic regression.
+Demonstrates: GD (fastest) > SVRG ~ SAG (linear) > SGD dec (slow O(1/k)) > SGD const (noise floor).
 
 Key design: moderate condition number (~100-500) so GD converges in ~50 passes,
-SVRG in ~80 passes, SGD dec slowly, SGD const stuck.
+SVRG/SAG in ~80 passes, SGD dec slowly, SGD const stuck.
 """
+import os
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -12,15 +13,13 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_classification
 from scipy.optimize import minimize
 
-n, d = 5000, 50
-mu = 1e-2  # moderate regularization
+n, d = 2000, 50
+mu = 1e-3  # regularization for kappa ~ 50-200
 
 def make_data(seed=42):
     X, y = make_classification(n_samples=n, n_features=d, n_informative=40,
-                               n_redundant=10, random_state=seed, class_sep=0.8)
+                               n_redundant=10, random_state=seed, class_sep=0.5)
     y = 2 * y - 1
-    # Normalize columns to unit norm for controlled L
-    X = X / np.linalg.norm(X, axis=0, keepdims=True)
     return X, y
 
 X, y = make_data()
@@ -102,13 +101,36 @@ def run_sgd_dec(seed):
         losses.append(logistic_loss(w) - f_star)
     return losses
 
+def run_sag(seed):
+    """SAG — linear convergence, O(np) memory for gradient table."""
+    rng = np.random.RandomState(seed)
+    w = np.zeros(d)
+    alpha = 1.0 / (16 * L_max)
+    grad_table = np.zeros((n, d))
+    avg_grad = np.zeros(d)
+    # Initialize gradient table
+    for i in range(n):
+        grad_table[i] = grad_i(w, i)
+    avg_grad = grad_table.mean(axis=0)
+
+    losses = [logistic_loss(w) - f_star]
+    for epoch in range(n_passes):
+        perm = rng.permutation(n)
+        for idx in perm:
+            new_g = grad_i(w, idx)
+            avg_grad += (new_g - grad_table[idx]) / n
+            grad_table[idx] = new_g
+            w = w - alpha * avg_grad
+        losses.append(logistic_loss(w) - f_star)
+    return losses
+
 def run_svrg(seed):
     """SVRG — linear convergence between SGD and GD.
     Each epoch = 1 full grad + 2n stoch evals = 3 passes.
     """
     rng = np.random.RandomState(seed)
     w = np.zeros(d)
-    eta = 1.0 / (3 * L)  # conservative SVRG step
+    eta = 1.0 / (3 * L_max)  # step must use per-sample smoothness
     m = 2 * n
     passes_per_epoch = 3
     n_outer = n_passes // passes_per_epoch
@@ -141,6 +163,10 @@ print("Running SGD (decreasing lr)...")
 all_sgd_dec = [run_sgd_dec(s) for s in range(n_runs)]
 losses_sgd_dec = np.median(all_sgd_dec, axis=0)
 
+print("Running SAG...")
+all_sag = [run_sag(s) for s in range(n_runs)]
+losses_sag = np.median(all_sag, axis=0)
+
 print("Running SVRG...")
 all_svrg = [run_svrg(s) for s in range(n_runs)]
 for lst in all_svrg:
@@ -150,11 +176,12 @@ losses_svrg = np.median(all_svrg, axis=0)
 
 # Clip
 losses_gd = np.maximum(losses_gd, 1e-16)
+losses_sag = np.maximum(losses_sag, 1e-16)
 losses_sgd = np.maximum(losses_sgd, 1e-16)
 losses_sgd_dec = np.maximum(losses_sgd_dec, 1e-16)
 losses_svrg = np.maximum(losses_svrg, 1e-16)
 
-print(f"Final: GD={losses_gd[-1]:.2e}, SVRG={losses_svrg[-1]:.2e}, "
+print(f"Final: GD={losses_gd[-1]:.2e}, SAG={losses_sag[-1]:.2e}, SVRG={losses_svrg[-1]:.2e}, "
       f"SGD_dec={losses_sgd_dec[-1]:.2e}, SGD_const={losses_sgd[-1]:.2e}")
 
 # ---- PLOT ----
@@ -171,6 +198,7 @@ fig, ax = plt.subplots(1, 1, figsize=(10, 6.5))
 
 epochs = np.arange(n_passes + 1)
 ax.semilogy(epochs, losses_gd, 'k-', linewidth=2.5, label='GD (полный градиент)', alpha=0.85)
+ax.semilogy(epochs, losses_sag, '-', color='#27ae60', linewidth=2.5, label='SAG', alpha=0.85)
 ax.semilogy(epochs, losses_svrg, '-', color='#2980b9', linewidth=2.5, label='SVRG', alpha=0.85)
 ax.semilogy(epochs, losses_sgd_dec, '--', color='#e67e22', linewidth=2.5,
             label=r'SGD ($\alpha_k \sim 1/k$)', alpha=0.85)
@@ -190,6 +218,7 @@ ax.set_xlim([0, n_passes])
 ax.tick_params(labelsize=13)
 
 plt.tight_layout()
-plt.savefig('/root/mipt25_work/files/exp_svrg_vs_sgd.pdf', bbox_inches='tight', dpi=150)
-plt.savefig('/root/mipt25_work/files/exp_svrg_vs_sgd.png', bbox_inches='tight', dpi=150)
-print("Saved exp_svrg_vs_sgd.pdf and .png")
+outdir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'files')
+plt.savefig(os.path.join(outdir, 'exp_svrg_vs_sgd.pdf'), bbox_inches='tight', dpi=150)
+plt.savefig(os.path.join(outdir, 'exp_svrg_vs_sgd.png'), bbox_inches='tight', dpi=150)
+print(f"Saved to {outdir}/exp_svrg_vs_sgd.pdf and .png")
